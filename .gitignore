@@ -1,0 +1,16 @@
+# Dependency directories
+node_modules/
+
+
+public/
+src/
+illustrations_svg
+run server.txt
+build.zip
+
+# dotenv environment variables file
+.env.development
+.env.production
+
+
+*.log
