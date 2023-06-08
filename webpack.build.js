@@ -100,6 +100,7 @@ var html = `<!DOCTYPE html>
    </script>
 </head>
 <body>
+  <noscript>You need to enable JavaScript for this Site.</noscript>
   <div class="spinner-container">
     <div class="spinner-large"></div>
   </div>
