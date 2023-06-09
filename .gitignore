@@ -7,6 +7,9 @@ src/
 illustrations_svg
 run server.txt
 build.zip
+bg.jpg
+default.jpg
+faviconold.png
 
 # dotenv environment variables file
 .env.development
