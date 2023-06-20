@@ -40,6 +40,22 @@ module.exports = {
                     accent: "#66cc8a",
                     neutral: "#333c4d",
                     "base-100": "#ffffff",
+                    ".btn-danger": {
+                        "background-color": "transparent",
+                        "border-color": "#e5e7eb",
+                    },
+                    ".btn-danger:hover": {
+                        "background-color": "#efefef",
+                        "border-color": "#e5e7eb",
+                    },
+                    ".btn-edit": {
+                        "background-color": "transparent",
+                        "border-color": "#e5e7eb",
+                    },
+                    ".btn-edit:hover": {
+                        "background-color": "#efefef",
+                        "border-color": "#e5e7eb",
+                    }
                 },
             }, 
             {
