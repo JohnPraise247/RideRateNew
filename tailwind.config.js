@@ -55,6 +55,9 @@ module.exports = {
                     ".btn-edit:hover": {
                         "background-color": "#efefef",
                         "border-color": "#e5e7eb",
+                    },
+                    ".badge-grey": {
+                        "border-color": "#e5e7eb",
                     }
                 },
             }, 
