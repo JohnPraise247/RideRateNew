@@ -60,7 +60,7 @@ module.exports = {
                         "border-color": "#e5e7eb",
                     },
                     ".btn-social-link": {
-                        "color": "#D1D5DB",
+                        "color": "#374151",
                         "background-color": "transparent",
                         "border-color": "transparent",//#e5e7eb
                     },
