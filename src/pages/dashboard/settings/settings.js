@@ -1,0 +1,114 @@
+const settingsSection = {
+    view:()=>{
+        return m("div.card.w-full.p-6.bg-base-100.shadow-xl.mt-2",
+            [
+                m("div.text-xl.font-semibold.",
+                    "Profile Settings"
+                ),
+                m("div.divider.mt-2"),
+                m("div.h-full.w-full.pb-6.bg-base-100",
+                    [
+                        m("div.grid.grid-cols-1.md:grid-cols-2.gap-6",
+                            [
+                                m("div.form-control.w-full.undefined",
+                                    [
+                                        m("label.label",
+                                            m("span.label-text.text-base-content.undefined",
+                                                "Name"
+                                            )
+                                        ),
+                                        m("input.input.input-bordered.w-full.[type='text'][placeholder=''][value='Alex']")
+                                    ]
+                                ),
+                                m("div.form-control.w-full.undefined",
+                                    [
+                                        m("label.label",
+                                            m("span.label-text.text-base-content.undefined",
+                                                "Email Id"
+                                            )
+                                        ),
+                                        m("input.input.input-bordered.w-full.[type='text'][placeholder=''][value='alex@dashwind.com']")
+                                    ]
+                                ),
+                                m("div.form-control.w-full.undefined",
+                                    [
+                                        m("label.label",
+                                            m("span.label-text.text-base-content.undefined",
+                                                "Title"
+                                            )
+                                        ),
+                                        m("input.input.input-bordered.w-full.[type='text'][placeholder=''][value='UI/UX Designer']")
+                                    ]
+                                ),
+                                m("div.form-control.w-full.undefined",
+                                    [
+                                        m("label.label",
+                                            m("span.label-text.text-base-content.undefined",
+                                                "Place"
+                                            )
+                                        ),
+                                        m("input.input.input-bordered.w-full.[type='text'][placeholder=''][value='California']")
+                                    ]
+                                ),
+                                m("div.form-control.w-full.undefined",
+                                    [
+                                        m("label.label",
+                                            m("span.label-text.text-base-content.undefined",
+                                                "About"
+                                            )
+                                        ),
+                                        m("textarea.textarea.textarea-bordered.w-full[placeholder='']",
+                                            "Doing what I love, part time traveller"
+                                        )
+                                    ]
+                                )
+                            ]
+                        ),
+                        m("div.divider"),
+                        m("div.grid.grid-cols-1.md:grid-cols-2.gap-6",
+                            [
+                                m("div.form-control.w-full.undefined",
+                                    [
+                                        m("label.label",
+                                            m("span.label-text.text-base-content.undefined",
+                                                "Language"
+                                            )
+                                        ),
+                                        m("input.input.input-bordered.w-full.[type='text'][placeholder=''][value='English']")
+                                    ]
+                                ),
+                                m("div.form-control.w-full.undefined",
+                                    [
+                                        m("label.label",
+                                            m("span.label-text.text-base-content.undefined",
+                                                "Timezone"
+                                            )
+                                        ),
+                                        m("input.input.input-bordered.w-full.[type='text'][placeholder=''][value='IST']")
+                                    ]
+                                ),
+                                m("div.form-control.w-full.undefined",
+                                    m("label.label.cursor-pointer",
+                                        [
+                                            m("span.label-text.text-base-content.undefined",
+                                                "Sync Data"
+                                            ),
+                                            m("input.toggle[type='checkbox'][checked]")
+                                        ]
+                                    )
+                                )
+                            ]
+                        ),
+                        m("div.mt-16",
+                            m("button.btn.btn-primary.float-right",
+                                "Update"
+                            )
+                        )
+                    ]
+                )
+            ]
+        )   
+    }
+}
+
+export default settingsSection;

@@ -58,6 +58,16 @@ module.exports = {
                     },
                     ".badge-grey": {
                         "border-color": "#e5e7eb",
+                    },
+                    ".btn-social-link": {
+                        "color": "#D1D5DB",
+                        "background-color": "transparent",
+                        "border-color": "transparent",//#e5e7eb
+                    },
+                    ".btn-social-link:hover": {
+                        "color": "#6B7280",//#66cc8a
+                        "background-color": "transparent",
+                        "border-color": "transparent",//#66cc8a
                     }
                 },
             }, 

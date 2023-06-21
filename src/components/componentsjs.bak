@@ -1,0 +1,231 @@
+import $ from "jquery";
+import { Model, scrollToAnchor, setCookie, getCookie } from './model';
+
+
+// export const ContainerAbsolute = {
+//     view: (vnode) => {
+//         return [
+//             m(".container.container-absolute", [
+//                 m("h2.title", "RideRate"),
+//                 m(".panel.p-4.bg-transparent", [
+//                     m("p.text-white.py-3.text-center[style='opacity: .7']", vnode.attrs.title),
+//                     vnode.children
+//                 ])
+//             ]),
+//             m(".bg-overlay")
+//         ]
+//     }
+// }
+
+export const Layout = {
+    view: (vnode) => {
+        return m(".main", m("section", m(".container.p-5", vnode.children)))
+    }
+}
+
+export const AuthLayout = {
+    view:(vnode)=>{
+        return m(".container-fluid.vh-100", [
+            m(".row.d-flex.m-0.h-100", [
+                vnode.attrs.type == "admin" ? m(".col-md-6"+(vnode.attrs.type == "admin"?".admin-bg-image":".bg-image"), m(".bg-overlay")):null,
+                m(".col-md-6.content-fit", [
+                    m(".auth-header", [
+                        m("a.brand[href='#']", [
+                            m("i" + Model.icon.logo),
+                            m("span[style='font-weight:400']", "Ride"),
+                            m("span", "Rate")
+                        ]),
+                        vnode.attrs.subtextA != null ?m(".text-muted", [
+                            vnode.attrs.subtextA + " ",
+                            m("a.[href='"+vnode.attrs.subtexturl+"']", vnode.attrs.subtextB)
+                        ]):null
+                    ]),
+                    m(".auth-content", [
+                        m("h4"+(vnode.attrs.step == 1?".text-center":""), vnode.attrs.heading),
+                        vnode.attrs.subheading != null?m(".mb-5", vnode.attrs.subheading):null,
+                        vnode.attrs.children
+                    ])
+                ]),
+                vnode.attrs.type != "admin" ? m(".col-md-6"+(vnode.attrs.type == "admin"?".admin-bg-image":".bg-image"), m(".bg-overlay")) : null
+            ])
+        ])
+    }
+}
+
+export const Input = {
+    view: (vnode) => {
+        return [
+            vnode.attrs.label != null ? m("small", { style: "font-weight:500;color:#030303" }, vnode.attrs.label) : null,
+            m("input.form-control[type='" + vnode.attrs.type + "'][value=''][placeholder='" + vnode.attrs.placeholder + "']" + vnode.attrs.class, {
+                oninput: (e) => {
+                        vnode.attrs.oninput(e)
+                    },
+                    value: vnode.attrs.value
+            })
+        ]
+    }
+}
+
+export const Button = {
+    view: (vnode) => {
+        return m("button.btn.btn-primary" + vnode.attrs.class + Model.btnStyle, {
+            disabled: Model.disableBtn == null?vnode.attrs.disabled: true, onclick: vnode.attrs.onclick
+        }, [
+            Model.disableBtn != null?m(".spinner"):null,
+            vnode.attrs.iconPosition == "right" ? ([
+                vnode.attrs.name,
+                m("i.bx[style='position: relative;top: 2px;']" + vnode.attrs.icon)
+            ]) : ([
+                m("i.bx[style='position: relative;top: 2px;']" + vnode.attrs.icon),
+                vnode.attrs.name
+            ])
+        ])
+    }
+}
+
+
+
+
+
+export const NavBar = {
+    view: (vnode) => {
+        vnode.state.view = (vnode.attrs.nav == "nav-small" ? ".nav-small" : "")
+        return m("[id='navbar-full']", [
+            m(".container",
+                m("nav.navbar.navbar-default.navbar-transparent.navbar-fixed-top[role='navigation']",
+                    m(".container", [
+                        m(".navbar-header", [
+                            m("button.navbar-toggle[type='button'][data-toggle='collapse'][data-target='#navbar-collapse']", [
+                                m("span.sr-only", "Toggle navigation"),
+                                m("span.icon-bar"),
+                                m("span.icon-bar"),
+                                m("span.icon-bar")
+                            ]),
+                            // m("a[href='#/']",[
+                            //   m("span","Ride"),
+                            //   m(".navbar-brand","Rate")
+                            // ])
+                            m("a.navbar-brand[href='#/']", [
+                                m("i"+ Model.icon.logo),
+                                m("span[style='font-weight:400']", " Ride"), 
+                                "Rate"
+                            ])
+                        ]),
+                        m(".collapse.navbar-collapse[id='navbar-collapse']", [
+                            m("ul.nav.navbar-nav", [
+                                m("li" + (m.route.get() == "" || m.route.get() == "/" ? ".active" : ""), m("a[href='#']", "Home")),
+                                m("li" + (m.route.get() == "/about" ? ".active" : ""), m("a[href='#/about']", "About")),
+                                m("li" + (m.route.get() == "/contact-us" ? ".active" : ""), m("a[href='#/contact-us']", "Contact us"))
+                            ]),
+                            m("ul.nav.navbar-nav.navbar-right", [
+                                // m(m.route.Link, {href: "/page1"}, "Page 1"),
+                                m("li", m("a[href='#/login']", "Log in")),
+                                m("li", m("a.btn.btn-primary.btn-fill.text-white[href='#/signup']" + Model.btnStyle /*, m("i.bx.bx-log-in.bx-sm.mr-2[style='position: relative;top: 3px;']")*/ , "Sign up"))
+                            ])
+                        ])
+                    ])
+                )
+            ),
+            m(".background-container" + vnode.state.view, [
+                m(".bg-overlay"),
+                m(".motto", [
+                    vnode.attrs.nav != "nav-small" ? ([
+                        m("h1[data-aos='fade-in'][data-aos-delay='']", "Ride Smarter,"),
+                        m("h3[data-aos='fade-in'][data-aos-delay='400']", "Not Harder with ", m("b", "RideRate")),
+                        m(".mt-5", [
+                            //change to link because of mithril error on click
+                            //it still gives the error though, but works for app btn
+                            m("a.btn.btn-primary.btn-fill[data-aos='zoom-in'][data-aos-delay='500'][href='javascript:void(0)']" + Model.btnStyle,{
+                                onclick: () => scrollToAnchor("about")
+                            },[
+                                    m("span", "Learn more"),/*Get Started"*/
+                                    m("i.bx" + Model.icon.chevronRight)
+                            ]),
+                            /*m(Button, {
+                                name: "Learn more",
+                                icon: Model.icon.chevronRight,
+                                iconPosition: "right",
+                                class: ".btn-fill[data-aos='zoom-in'][data-aos-delay='500']",
+                                onclick: () => {
+                                    scrollToAnchor("about")
+                                }
+                            }),*/
+                            m("a.btn.btn-white.m-3[data-aos='zoom-in'][data-aos-delay='700'][href='#/check-rates']" + Model.btnStyle, "Check Rates")
+                        ])
+                    ]) :
+                    ([
+                        m(".container", [
+                            vnode.attrs.title.indexOf(' ') >= 0 ? m("h3", vnode.attrs.title.slice(0, vnode.attrs.title.lastIndexOf(" ")), m("b", vnode.attrs.title.slice(vnode.attrs.title.lastIndexOf(" ")))) : m("h3", vnode.attrs.title),
+                            vnode.attrs.sub != null ? m("h6", vnode.attrs.sub) : null
+                        ])
+
+                        // m("h3[data-aos='fade-in'][data-aos-delay='']","Check ", m("b","rates")),
+                        // m("h3[data-aos='fade-in']","Get latest Price Updates for Your Favorite Transportation with RideRate")
+                    ])
+                    // "Get Real-Time Price Updates for Your Favorite Transportation with RideRate"              
+                ]),
+                m(".img-src"),
+                m(".img-src.blur")
+            ])
+        ])
+    }
+}
+
+export var Cookie = {
+    oninit: (vnode) => {
+        // m.redraw = () => {}
+        vnode.attrs.acceptCookie = getCookie("acceptCookie");
+        (vnode.attrs.acceptCookie == null || vnode.attrs.acceptCookie == "") ? Model.acceptCookie = false: Model.acceptCookie = true
+    },
+    oncreate: () => {
+        //had to use this because of an error mithril gives on #cookies-infobar-btn
+        //Unknown reason why it gives this error
+        $("#cookies-infobar-btn").click(() => {
+            $(".cookies-infobar").remove();
+            setCookie("acceptCookie", true, 365);
+            Model.acceptCookie = true;
+        })
+    },
+    view: () => {
+        return (!Model.acceptCookie) ? m("div.cookies-infobar", [
+            // m("b", "Do you like cookies?"),
+            m(".d-block", [
+                m("span", "🍪 We use cookies to ensure you get the best experience on our website. By using our website, you consent to the use of cookies. "),
+                m("a[target='_blank'][href='https://www.allaboutcookies.org/']", "Learn more about cookies")
+            ]),
+            m("div", m("button.btn.btn-sm.btn-fill.btn-primary.mx-3.my-2.px-4" + Model.btnStyle, { id: "cookies-infobar-btn" }, "Okay"))
+        ]) : null
+    }
+}
+
+
+
+export const Footer = {
+    view: () => {
+        return m("footer.footer",
+            m("div.container-fluid", [
+                m("nav",
+                    m("ul.d-flex", [
+                        // m("li.mr-3", m("a[href='#']", " About us ")),
+                        m("li.mr-3", m("a[href='#/privacy-policy']", " Privacy Policy ")),
+                        m("span.mr-3", " | "),
+                        m("li.mr-3", m("a[href='#/tac']", " Terms & Conditions "))
+                        // m("li.mr-3", m("a[href='#']", " Contact us "))
+                    ])
+                ),
+                m("div.copyright", [
+                    m("span", " © 2023 "),
+                    m("a[href='#/']", "RideRate"),
+                    m("span", ", All Rights Reserved ")
+                ])
+                /*m("div.social-area.pull-right",[
+                    m("a.btn.btn-social.btn-facebook.btn-simple", m("i.fa.fa-facebook-square")),
+                    m("a.btn.btn-social.btn-twitter.btn-simple", m("i.fa.fa-twitter")),
+                    m("a.btn.btn-social.btn-pinterest.btn-simple", m("i.fa.fa-pinterest"))
+                  ]
+                ),*/
+
+            ])
+        )
+    }
+}
