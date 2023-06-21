@@ -9,7 +9,7 @@ const flex = {
                 ]),
                 m(".w-fit.flex.flex-col.justify-center.ml-2", [
                     m("p.text-gray-700", i.start + " to " + i.destination),
-                    i.description != null ? m("small.truncate.text-gray-400.w-56", i.description) : null
+                    i.description != null ? m("small.truncate.text-gray-400.w-48.md:w-56", i.description) : null
                 ]),
                 m(".rounded-full.border.border-gray-300.px-2.text-xs.text-gray-400.ml-auto.hidden.md:block", "Created: " + i.dateCreated)
             ]),
