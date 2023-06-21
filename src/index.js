@@ -12,6 +12,9 @@ import Error404 from "./pages/home/404/404";
 //add remeber me to sign in
 //design 404 page for main page
 
+//change spiiner to pure css. in webpack.build.js
+
+
 
 //https://www.npmjs.com/package/daisyui/v/2.52.0
 //https://emailvalidation.abstractapi.com/v1/?api_key=5f966a5af58040c191908e33902b1a3b&email=jpraise247@gmail.com

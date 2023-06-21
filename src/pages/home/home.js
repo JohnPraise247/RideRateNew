@@ -1,5 +1,5 @@
 // import { Main } from './main';
-import AOS from 'aos';
+import AOS from "aos";
 import NavBar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Cookie from "../../components/cookie";
@@ -16,9 +16,6 @@ import {
     SVGApple,
     SVGGoogleplay
 } from "../../components/svg";
-
-
-
 
 
 
@@ -63,13 +60,13 @@ const Home = {
                         m(SVGTravellers, { className: "md:h-96 md:w-96 w-48 h-48" }),
                         m("div",
                             [
-                                m("h1.text-5xl.font-bold", "Empowering Your Journey"),
+                                m("h1.text-5xl.font-bold[data-aos=fade-in][data-aos-anchor-placement=bottom-bottom]", "Empowering Your Journey"),
                                 // m("h1.text-5xl.font-bold.text-white", "Empowering Your Journey"),
                                 m("p.py-6", "Explore Real-Time Travel Rates for Vehicles and Make Informed Decisions Every Mile of the Way"),
                                 m(Button, {
                                     label: "Learn More",
                                     // type: "a",
-                                    className: ".btn-primary.mr-2.text-white.font-bold.capitalize"
+                                    className: ".btn-primary.mr-2.text-white.font-bold.capitalize]"
                                 }),
                                 m(Button, {
                                     label: "Check rates",
