@@ -10,13 +10,10 @@ import Error404 from "./pages/home/404/404";
 //check if loading daisyui is available
 //change the accordion on location.js
 //add remeber me to sign in
-//add spiiner to index.html 
 //design 404 page for main page
 
 
 //https://www.npmjs.com/package/daisyui/v/2.52.0
-
-
 //https://emailvalidation.abstractapi.com/v1/?api_key=5f966a5af58040c191908e33902b1a3b&email=jpraise247@gmail.com
 /* 
 try {
@@ -40,9 +37,6 @@ client.Records.getOne("demo", "RECORD_ID")
 // import { themeChange } from 'theme-change'
 // themeChange()
 
-// import Admin from './pages/admin/admin';
-// import AdminLogin from './pages/admin/login';
-// import Home from './pages/home/home';
 // import CheckRates from './pages/check-rates/check-rates';
 // import About from './pages/about/about';
 // import ContactUs from './pages/contact-us/contact-us';
@@ -64,7 +58,7 @@ client.Records.getOne("demo", "RECORD_ID")
 //wow, you can preload image
 //<link rel="preload" href="/images/testimonials/malak-profile.webp" as="image" type="image/webp">
 
-//fix li hover for nav
+
 //add auto suggest on input
 //no results found for location search...
 //add scroll to top btn    ---> https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
@@ -167,7 +161,3 @@ m.route(document.body, "/", {
         //         else return Home
         //     }
 });
-
-// setTimeout(()=>{
-//   if(!navigator.onLine) document.write("Refresh page")
-// },0)
