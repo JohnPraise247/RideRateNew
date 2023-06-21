@@ -87,7 +87,7 @@ var html = `<!DOCTYPE html>
    <meta name="language" content="English">
    <link rel="icon" type="image/png" href="./favicon.png">
    <link rel="preconnect" href="fonts.gstatic.com">
-   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700,200" rel="stylesheet">
+   <!--<link href="https://fonts.googleapis.com/css?family=Poppins:400,700,200" rel="stylesheet">-->
    <link href="./build/app.css" rel="stylesheet">
    <title>RideRate</title>
 
