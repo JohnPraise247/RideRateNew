@@ -12,21 +12,40 @@ import {
 } from "../svg";
 
 
-const getIcon = (label) => {
-    return label == "dashboard"? m(SVGDashboard, {className: "w-4 h-4" }) 
-           :label == "locations"? m(SVGLocation, {className: "w-4 h-4" }) 
-           :label == "rates"? m(SVGDollar, {className: "w-4 h-4" })
-           :label == "users"? m(SVGUsers, {className: "w-4 h-4" })
-           :label == "analytics"? m(SVGAnalytics, {className: "w-4 h-4" })
-           :label == "settings"? m(SVGCog, {className: "w-4 h-4" })
-           :m(SVGQuestionMark, {className: "w-4 h-4" })
-}
+// const getIcon = (label) => {
+//     return label == "dashboard"? m(SVGDashboard, {className: "w-4 h-4" }) 
+//            :label == "locations"? m(SVGLocation, {className: "w-4 h-4" }) 
+//            :label == "rates"? m(SVGDollar, {className: "w-4 h-4" })
+//            :label == "users"? m(SVGUsers, {className: "w-4 h-4" })
+//            :label == "analytics"? m(SVGAnalytics, {className: "w-4 h-4" })
+//            :label == "settings"? m(SVGCog, {className: "w-4 h-4" })
+//            :m(SVGQuestionMark, {className: "w-4 h-4" })
+// }
 
 const BreadCrumbs = {
     view: ({ state: { url = m.route.get().slice(1), usertype = m.route.get().slice(1, 6)  }})=>{
-        var url = [ "dashboard", m.route.param("urlA") ]
+        var url = [ "dashboard", m.route.param("urlA") ];
+        var len = url.length;
 
-        return m(".flex", [
+        return m("div.text-sm.breadcrumbs",
+            m("ul",
+                [
+                    url.map((e, index) => {
+                        return m("li",
+                            m("a", {
+                                class: index == len - 1 ? "link-primary" : "",
+                                href: "#" + getUsertype() + "/" + e
+                            }, e.charAt(0).toUpperCase() + e.slice(1)
+                            )
+                        )
+                    })
+                ]
+            )
+        )
+        
+        
+        
+        /*m(".flex", [
             m("div.text-sm.breadcrumbs.rounded-lg.bg-base-100.px-4.py-3.shadow-sm.mr-3.w-full",//bg-gray-50
             m("ul",
                 [
@@ -88,7 +107,7 @@ const BreadCrumbs = {
             //         )
             //     ]
             // )
-        ])
+        ])*/
     }
 }
 

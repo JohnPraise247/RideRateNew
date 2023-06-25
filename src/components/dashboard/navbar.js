@@ -1,28 +1,48 @@
 import { isAdmin } from "../../app/model";
 import { ButtonAvatar, ButtonIcon } from "../button"
+import TextInput from "../input";
 import { SVGMenu2, SVGNotif, SVGSearch } from "../svg"
 
 const NavBar = {
+    // oninit:(vnode)=>{
+    //     vnode.state.value = ""
+    // },
     view: ({ state: { hash = m.route.param("urlA") || "dashboard", title = hash.charAt(0).toUpperCase() + hash.slice(1) }})=>{
-        return m(".navbar.bg-base-100.z-10.shadow-md.sticky.top-0", [//.flex.justify-between
+        var val = ""
+        return m(".navbar.bg-base-100.z-10.shadow-sm.sticky.top-0", [//.flex.justify-between
                 m(".flex-1", [
                     m("label.btn.btn-primary.text-white.drawer-button.lg:hidden[for='left-sidebar-drawer']",
                         m(SVGMenu2, { className: "h-5 inline-block w-5" })
                     ),
-                    m("h1.text-xl.font-semibold.ml-2.md:text-2xl",
-                        hash == "dashboard" || hash == "locations" || hash == "rates" || hash == "settings" || (hash == "users" && isAdmin()) || (hash == "analytics" && isAdmin()) ? title
-                            : "Page not found"
-                    )
+                    // m(ButtonIcon, {
+                    //     svg: SVGSearch
+                    // }),
+                    m(SVGSearch, { className: "mx-3 w-5 h-5"}),
+                    m(TextInput, {
+                        id: "searchInput",
+                        type: "text",
+                        value: val,
+                        // classNameMain:"mr-8",
+                        className: "input-sm input-ghost  sm:max-w-xs md:max-w-full",//hidden
+                        placeholder: "Type to search",
+                        oninput: (e) => val = e.target.value
+                    }),
+                    // m("h1.text-xl.font-semibold.ml-2.md:text-2xl",
+                    //     hash == "dashboard" || hash == "locations" || hash == "rates" || hash == "settings" || (hash == "users" && isAdmin()) || (hash == "analytics" && isAdmin()) ? title
+                    //         : "Page not found"
+                    // )
                 ]),
                 m(".flex-none",
                     [
                         m(ButtonIcon, {
                             svg: SVGNotif,
                             indicator: 15,
+                            className: "ml-8",
                             onclick: () => console.log("Pressed Notification")
                         }),
                         m(ButtonIcon, {
                             svg: SVGSearch,
+                            className: "sm:hidden md:hidden",
                             onclick: () => console.log("Pressed Search")
                         }),
                         m(ButtonAvatar, {

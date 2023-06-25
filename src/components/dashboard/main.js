@@ -18,6 +18,7 @@ import NavBar from "./navbar";
 import { StatsCard, StatsRow } from "./stats";
 import Error404 from "../../pages/home/404/404";
 import BreadCrumbs from "./breadcrumbs";
+import Title from "./title";
 
 
 const dashboardSection = {
@@ -692,12 +693,15 @@ const dashboardSection = {
 
 const Main = {
     view: ({ state: { hash = m.route.param("urlA") || "dashboard", usertype = m.route.get().slice(1, 6) }}) =>{
-        return m(".drawer.lg:drawer-open.h-screen", [//.drawer-mobile
+        return m(".drawer.lg:drawer-open", [//.drawer-mobile  .h-screen
             m("input.drawer-toggle[id='left-sidebar-drawer'][type='checkbox']"),
             m(".drawer-content.flex.flex-col.items-center.justify-center", [
                 m(NavBar),
                 m("main.flex-1.overflow-y-auto.w-full.pt-8.pb-20.px-3.bg-base-200.md:px-6", [
-                    hash != "dashboard"?m(BreadCrumbs) : null,
+                    hash != "dashboard"? ([
+                        m(Title),
+                        m(BreadCrumbs)
+                    ]) : null,
                     hash == "dashboard"? m(dashboardSection)
                     :hash == "locations"? m(locationSection)
                     :hash == "rates"? m(ratesSection)

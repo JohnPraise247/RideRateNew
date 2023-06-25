@@ -1,3 +1,4 @@
+import { themeChange } from 'theme-change'; themeChange()
 import Auth from "./app/auth";
 import Home from "./pages/home/home";
 import Signup from './pages/home/signup/signup';
@@ -5,6 +6,8 @@ import Login from './pages/home/login/login';
 import ForgotPwd from './pages/home/forgot-pwd/forgot-pwd';
 import { Dashboard } from './pages/dashboard/dashboard';
 import Error404 from "./pages/home/404/404";
+
+
 
 // Todo
 //check if loading daisyui is available
@@ -37,8 +40,7 @@ client.Records.getOne("demo", "RECORD_ID")
 
 
 */
-import { themeChange } from 'theme-change'
-themeChange()
+
 
 // import CheckRates from './pages/check-rates/check-rates';
 // import About from './pages/about/about';

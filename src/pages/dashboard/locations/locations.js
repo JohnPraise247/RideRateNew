@@ -8,6 +8,7 @@ import { getLength, locations } from "../../../app/data";
 import { Model, isAdmin } from "../../../app/model";
 import List from "../../../components/dashboard/list";
 import Table from "../../../components/dashboard/table";
+import Title from "../../../components/dashboard/title";
 
 
 const sectionMain = {
@@ -76,7 +77,7 @@ const sectionHistory = {
 
 
 const locationsSection = {
-  view: () => {
+    view: () => {
     return [
       locations.data.length == 0 ? m(emptyState)
       :(

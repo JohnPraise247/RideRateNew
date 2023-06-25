@@ -88,6 +88,16 @@ module.exports = {
                         "background-color": "#ea5234",
                         "border-color": "#ea5234",
                     },
+
+
+                    // ".stats":{
+                    //     "overflow":"auto",
+                    //     "width":"100%"
+                    // },
+                    // ".stat":{
+                    //     "column-gap":"0",
+                    //     "padding":"0"
+                    // }
                 },
             }, 
             {

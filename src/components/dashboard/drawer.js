@@ -12,7 +12,7 @@ import {
 const List = {
     view:({ attrs: { svg, label, url, active } }) =>{
         return m("li",
-            m("a.md:text-xl[href='#" + getUsertype() + url + "']" + (active ? ".font-semibold.bg-base-200.[aria-current='page']" : ".font-normal"),
+            m("a[href='#" + getUsertype() + url + "']" + (active ? ".font-semibold.bg-base-200.[aria-current='page']" : ".font-normal"),//.md:text-xl
                 [
                     m(svg),
                     label,
@@ -24,11 +24,11 @@ const List = {
 }
 
 const Drawer = {
-    view: ({ state: { hash = m.route.param("urlA") || "dashboard", usertype = m.route.get().slice(1, 6) } }) =>{
+    view: ({ state: { hash = m.route.param("urlA") || "dashboard" } }) =>{
         return m("div.drawer-side.z-50",
             [
                 m("label.drawer-overlay[for='left-sidebar-drawer']"),
-                m("ul.menu.p-4.w-80.h-full.bg-base-100.text-base-content.z-100",
+                m("ul.menu.p-4.w-80.md:w-64.h-full.bg-base-100.text-base-content",//.fixed.top-0.bottom-0
                     [
                         // m(ButtonClose, {
                         //     svg: SVGClose,

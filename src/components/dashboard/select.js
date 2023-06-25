@@ -1,8 +1,9 @@
 import { Model } from "../../app/model"
 
 const Select = {
-    view:({ attrs: { label , options, oncreate, onchange }})=>{
+    view:({ attrs: { label , options, oncreate, onchange, className }})=>{
         return m("select.select.select-bordered.max-w-xs.shadow-sm", {
+            class: className,
             oncreate:()=> oncreate(),
             onchange:(e)=> onchange(e),
             // onupdate:()=>{
