@@ -36,17 +36,28 @@ module.exports = {
                 themelight: {
                     primary: "#66cc8a",//"#32bb7a",()
                     secondary: "#f3f4f6",
+                    error: "#f87272",
                     // secondary: "#f2f2f2",
-                    accent: "#66cc8a",
-                    neutral: "#333c4d",
+                    accent: "#f04050",//#66cc8a
+                    neutral: "#3d4451"/* #333c4d */,//#D1D5DB",//333c4d  #66cc8a
+                    // neutral: "#66cc8a",//#D1D5DB",//333c4d  #66cc8a
                     "base-100": "#ffffff",
-                    ".btn-danger": {
+                    ".btn-white": {//for app download button
+                        "background-color": "#ffffff",
+                        "border-color": "#ffffff",
+                        "color": "#575757",
+                    },
+                    ".btn-white:hover": {//for app download button
+                        "background-color": "#efefef",
+                        "border-color": "#efefef"
+                    },
+                    ".btn-delete": {
                         "background-color": "transparent",
                         "border-color": "#e5e7eb",
                     },
-                    ".btn-danger:hover": {
-                        "background-color": "#efefef",
-                        "border-color": "#e5e7eb",
+                    ".btn-delete:hover": {
+                        "background-color": "#FEF2F2",
+                        "border-color": "#FEF2F2",
                     },
                     ".btn-edit": {
                         "background-color": "transparent",
@@ -54,7 +65,7 @@ module.exports = {
                     },
                     ".btn-edit:hover": {
                         "background-color": "#efefef",
-                        "border-color": "#e5e7eb",
+                        "border-color": "#efefef",
                     },
                     ".badge-grey": {
                         "border-color": "#e5e7eb",
@@ -68,18 +79,28 @@ module.exports = {
                         "color": "#6B7280",//#66cc8a
                         "background-color": "transparent",
                         "border-color": "transparent",//#66cc8a
-                    }
+                    },
+                    ".btn-error": {
+                        "background-color": "#f87272", 
+                        "border-color": "#f87272",
+                    },
+                    ".btn-error:hover": {
+                        "background-color": "#ea5234",
+                        "border-color": "#ea5234",
+                    },
                 },
             }, 
             {
                 themedark: {
-                    primary: "#1eb854",//"#32bb7a",
+                    primary: "#66cc8a",//"#32bb7a",   //#1eb854
                     // primary: "#66cc8a",//"#32bb7a",
                     // secondary: "#1db990",
-                    secondary: "#ccffcc",
-                    accent: "#93ffa1",
+                    secondary: "#1F2937",//#ccffcc
+                    // "secondaryHover":"#f04050",
+                    accent: "#f04050",//93ffa1
                     neutral: "#3d4451",
                     "base-100": "#212121",//grey
+                    ".btn-white": "#ffffff"
                     // "base-100": "#18342b",
                     // "base-100": "#171212",
                 },

@@ -4,7 +4,18 @@ export const Model = {
     userType: "contributor",
     modeSelect: 0,//Preview mode,
     modeList: ["preview", "history"],
-    modeAdminList: ["preview", "validate", "history"]
+    modeAdminList: ["preview", "validate", "history"],
+    modal:{
+        location:{
+            id: null,
+            title: "New location entry",
+            start: "",
+            destination: "",
+            description: "",
+            dateCreated: "",
+            dateUpdated: ""
+        }
+    }
 }
 
 export const setCookie = (cname, cvalue, exdays) => {
@@ -28,6 +39,24 @@ export const getCookie = (cname) => {
         }
     }
     return "";
+}
+
+export const getUsertype = () => {
+    var usertype = m.route.get().slice(1, 6);
+    
+    return usertype == "admin" ? "/admin" : "/u";
+}
+
+export const isAdmin = () =>{
+    var isAdmin =  m.route.get().slice(1, 6);
+    // var isAdmin =  (m.route.get() != null ? m.route.get().slice(1, 6) : "123")
+   
+    // console
+    // setTimeout(() => {
+    //     alert(m.route.get())
+    // }, 3000);
+
+    return isAdmin == "admin";
 }
 
 window.addEventListener('hashchange', function () {

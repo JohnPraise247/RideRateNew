@@ -354,13 +354,13 @@ const Home = {
                             m(Button, {
                                 label: "App store",
                                 // type: "a",
-                                className: ".btn-secondary.font-bold.capitalize.bg-base-100.w-40.mb-4.mr-4",
+                                className: ".btn-white.font-bold.capitalize.w-40.mb-4.mr-4",
                                 svg: m(SVGApple, {className: "w-5 h-5 pr-1"})
                             }),
                             m(Button, {
                                 label: "Play store",
                                 // type: "a",
-                                className: ".btn-secondary.font-bold.capitalize.bg-base-100.w-40.mr-4",
+                                className: ".btn-white.font-bold.capitalize.w-40.mr-4",
                                 svg: m(SVGGoogleplay, {className: "w-5 h-5 pr-1"})
                             }),
 

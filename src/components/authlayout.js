@@ -35,7 +35,7 @@ export const AuthLayout = {
                     subtitle != null ? m("p.text-md.text-gray-100.hidden.md:block", subtitle) : null
                  ]
                 ),
-                m(".px-10.bg-white.flex.justify-center.flex-col.md:py-0.md:px-16.lg:px-28", {
+                m(".px-10.bg-base-100.flex.justify-center.flex-col.md:py-0.md:px-16.lg:px-28", {
                     class: url == "/signup" || url == "/login" ? "" : "py-24"
                 },[//.py-24
                     m("h2.text-2xl.font-bold.text-center" + (url == "/forgot-pwd" ? ".mb-4" : url == "/signup" && step == 3 ? "": ".mb-8"), (

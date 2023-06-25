@@ -1,17 +1,17 @@
 // import { dSearchInput } from '../components';
 import Accordion from "../../../components/dashboard/accordion";
 import emptyState from "../../../components/dashboard/emptystate";
-import { Fab, Fab2 } from "../../../components/dashboard/fab";
+import { Fab2 } from "../../../components/dashboard/fab";
 import { StatsRow } from "../../../components/dashboard/stats";
 import { SVGExclamation, SVGTick, SVGTimes } from "../../../components/svg";
 import { getLength, locations } from "../../../app/data";
-import { Model } from "../../../app/model";
-import { Button } from "../../../components/button";
+import { Model, isAdmin } from "../../../app/model";
 import List from "../../../components/dashboard/list";
+import Table from "../../../components/dashboard/table";
 
 
 const sectionMain = {
-  view:(vnode)=>{
+  view:()=>{
     return [
         m(StatsRow, {
         label: [
@@ -28,26 +28,45 @@ const sectionMain = {
         label: "Approved",
         children: m(List, {array: locations, status: "approved"}),
         svg: SVGTick,
-        className: "border border-green-500",
+        // className: "border border-green-500",
+        className: "shadow",
         open: getLength(locations, "approved") > 0 ? true : false
       }),
       m(Accordion, {
         label: "Pending",
         children: m(List, {array: locations, status: "pending"}),
         svg: SVGExclamation,
-        className: "border border-yellow-500",
+        // className: "border border-yellow-500",
+        className: "shadow",
         open: getLength(locations, "pending") > 0 ? true : false
       }),
       m(Accordion, {
         label: "Rejected",
         children: m(List, {array: locations, status: "rejected"}),
         svg: SVGTimes,
-        className: "border border-red-500",
+        // className: "border border-red-500",
+        className: "shadow",
         open: getLength(locations, "rejected") > 0 ? true : false
       })
     ]
   }
 }
+
+const sectionValidate = {
+  view:()=>{
+    return m(Table, {
+      thead: ["User", "Type", "Role"],
+      tbody: [
+        [
+          m("td.font-bold", "John"),
+          m("td", "location"),
+          m("td", "member"),
+        ]
+      ]
+    })
+  }
+}
+
 
 const sectionHistory = {
   view:()=>{
@@ -61,7 +80,10 @@ const locationsSection = {
     return [
       locations.data.length == 0 ? m(emptyState)
       :(
-          m.route.param("mode") == Model.modeList[0] ? m(sectionMain) : m(sectionHistory)
+          m.route.param("mode") == Model.modeList[0] || m.route.param("mode") == null 
+          ? m(sectionMain) 
+          : isAdmin() && m.route.param("mode") == Model.modeList[1] ? m(sectionValidate)
+          : m(sectionHistory)
       ),
       locations.data.length > 0 ? m(Fab2) : null
       // location.data.length > 0 ? m(Fab, {

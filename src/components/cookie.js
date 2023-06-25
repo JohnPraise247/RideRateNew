@@ -7,7 +7,7 @@ const Cookie = {
     view: ()=>{
         getCookie("acceptCookie") == "" ? Model.acceptCookie = false : Model.acceptCookie = true
 
-        return (!Model.acceptCookie) ? m(".w-full.p-5.lg:px-24.fixed.bottom-0.bg-white.z-50.border-t.border-gray-200[data-aos='fade-up'][data-aos-delay='1000']", [//bg-gray-600
+        return (!Model.acceptCookie) ? m(".w-full.p-5.lg:px-24.fixed.bottom-0.bg-base-100.z-50.border-t.border-base-200[data-aos='fade-up'][data-aos-delay='1000']", [//bg-gray-600  /.themedark:border-base-100
             m(".md:flex.items-center.-mx-3", [
                 m("div.md:flex-1.px-3.mb-5.md:mb-0",
                     m("p.text-center.md:text-left.text-xs.leading-tight.md:pr-12",

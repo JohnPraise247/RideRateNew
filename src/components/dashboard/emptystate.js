@@ -1,4 +1,5 @@
 // import { Button } from "../button";
+import { Model } from "../../app/model";
 import { SVGEmpty } from "../svg"
 
 const emptyState = {
@@ -8,10 +9,12 @@ const emptyState = {
             // m("h3","No locations created yet"),
             m("label.btn.btn-primary.btn-sm.capitalize.font-bold.mt-5.text-white.md:ml-12.md:px-5.md:h-10", {
                 for: (
-                    url == "locations" ? "modalCreateLocation"
+                    url == "locations" ? "modalLocation"
                         : url == "rates" ? "modalCreateRate"
                         : "modalCreate"
-                )
+                ), onclick: () => {
+                    Model.modal.location.title = "New location entry"
+                }
             },
                 (
                     url == "locations" ? "Create new location"
@@ -27,7 +30,7 @@ const emptyState = {
             //     ),
             //     className: ".btn-primary.btn-sm.capitalize.font-bold.mt-5.text-white.md:ml-12.md:px-5.md:h-10",
             //     onclick: () => {
-            //         // url == "locations" ? modalCreateLocation.showModal()
+            //         // url == "locations" ? modalLocation.showModal()
             //         //     : url == "rates" ? "Create new rate" :
             //         //         "- - - "
             //     }

@@ -1,6 +1,6 @@
-import { ButtonClose } from "../button";
-import { 
-    SVGClose, 
+import { getUsertype, isAdmin } from "../../app/model";
+import { ButtonMode } from "../button";
+import {  
     SVGDashboard,
     SVGDollar,
     SVGLocation,
@@ -10,13 +10,13 @@ import {
  } from "../svg";
 
 const List = {
-    view:({ state: { usertype = m.route.get().slice(1, 6) }, attrs: { svg, label, url, active } }) =>{
+    view:({ attrs: { svg, label, url, active } }) =>{
         return m("li",
-            m("a.md:text-xl[href='#/" + (usertype == "admin" ? usertype : "u") + url + "']" + (active ? ".font-semibold.bg-base-200.[aria-current='page']" : ".font-normal"),
+            m("a.md:text-xl[href='#" + getUsertype() + url + "']" + (active ? ".font-semibold.bg-base-200.[aria-current='page']" : ".font-normal"),
                 [
                     m(svg),
                     label,
-                    active? m("span.absolute.inset-y-0.left-0.w-1.rounded-tr-md.rounded-br-md.bg-primary.[aria-hidden='true']") : null
+                    // active? m(   "span.absolute.inset-y-0.left-0.w-1.rounded-tr-md.rounded-br-md.bg-primary.[aria-hidden='true']") : null
                 ]
             )
         )
@@ -25,23 +25,36 @@ const List = {
 
 const Drawer = {
     view: ({ state: { hash = m.route.param("urlA") || "dashboard", usertype = m.route.get().slice(1, 6) } }) =>{
-        return m("div.drawer-side",
+        return m("div.drawer-side.z-50",
             [
                 m("label.drawer-overlay[for='left-sidebar-drawer']"),
-                m("ul.menu.pt-2.w-80.bg-base-100.text-base-content",
+                m("ul.menu.p-4.w-80.h-full.bg-base-100.text-base-content.z-100",
                     [
-                        m(ButtonClose, {
-                            svg: SVGClose,
-                            className: "bg-base-300 z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden"
-                        }),
-                        m("li.mb-2.font-semibold.text-xl.md:text-2xl",
-                            m("a[href='#/" + (usertype == "admin" ? usertype : "u") + "/dashboard']",
-                                [
-                                    m("img.mask.mask-squircle.w-10[src='./favicon.png'][alt='RideRate Logo']"),
-                                    "RideRate"
-                                ]
-                            )
-                        ),
+                        // m(ButtonClose, {
+                        //     svg: SVGClose,
+                        //     className: "bg-base-300 z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden"
+                        // }),
+                        m(".flex",[
+                            m("li.mb-2.font-semibold.text-xl.md:text-2xl",
+                                m("a.flex-0.px-2[href='#" + getUsertype() + "/dashboard'][aria-current=page][aria-label=Homepage]",
+                                    m(".font-title.inline-flex.items-center.text-lg.md:text-2xl", [
+                                        m("img.w-8.h-8.md:w-10.md:h-10[src='./favicon.png'][alt='RideRate Logo']"),
+                                        m("span.capitalize", "Ride"),
+                                        m("span.text-primary.capitalize", "Rate")
+                                    ])
+                                )
+                            ),
+                            m(ButtonMode, {className: "ml-auto"})
+                        ]),
+                        
+                        // m("li.mb-2.font-semibold.text-xl.md:text-2xl",
+                        //     m("a[href='#/" + (usertype == "admin" ? usertype : "u") + "/dashboard']",
+                        //         [
+                        //             m("img.mask.mask-squircle.w-10[src='./favicon.png'][alt='RideRate Logo']"),
+                        //             "RideRate"
+                        //         ]
+                        //     )
+                        // ),
                         m(List, {
                             svg: SVGDashboard,
                             label: "Dashboard",
@@ -60,13 +73,13 @@ const Drawer = {
                             url: "/rates",
                             active: hash == "rates"? true : false
                         }),
-                        usertype == "admin" ? m(List, {
+                        isAdmin() ? m(List, {
                             svg: SVGUsers,
                             label: "Users",
                             url: "/users",
                             active: hash == "users" ? true : false
                         }) : null,
-                        usertype == "admin" ? m(List, {
+                        isAdmin() ? m(List, {
                             svg: SVGAnalytics,
                             label: "Analytics",
                             url: "/analytics",

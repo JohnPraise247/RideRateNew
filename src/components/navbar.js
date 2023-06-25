@@ -1,4 +1,4 @@
-import { Button } from "./button"
+import { Button, ButtonMode } from "./button"
 import { SVGChevronDown, SVGChevronRight, SVGMenu } from "./svg";
 
  const NavBar = {
@@ -7,48 +7,38 @@ import { SVGChevronDown, SVGChevronRight, SVGMenu } from "./svg";
              [
                  m("div.navbar-start",
                      [
-                         m("div.dropdown",
+                         m("div.dropdown.z-10",
                              [
                                  m("label.btn.btn-ghost.lg:hidden[tabindex='0']",
                                      m(SVGMenu)
                                  ),
-                                 m("ul.menu.menu-compact.dropdown-content.mt-3.p-2.shadow.bg-base-100.rounded-box.w-52[tabindex='0']",
+                                 m("ul.menu.menu-compact.dropdown-content.mt-3.p-2.shadow.bg-base-100.rounded-box.w-52",//[tabindex='0']
                                      [
-                                         m("li[tabindex='0']",
-                                             [
-                                                 m("a.justify-between[href=#/]",
-                                                     [
-                                                         " Partner with us ",
-                                                         m(SVGChevronRight)
-                                                     ]
-                                                 ),
-                                                 m("ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-36",
-                                                     [
-                                                         m("li",
-                                                             m("a[href=#/]", "Contributor")
-                                                         ),
-                                                         m("li",
-                                                             m("a[href=#/]", "Consumer")
-                                                         )
-                                                     ]
-                                                 )
-                                             ]
+                                         m("li",
+                                             m("details",
+                                                 [
+                                                     m("summary", "Partner with us"),
+                                                     m("ul",
+                                                         [
+                                                            m("li", m("a[href=#/]", "Contributor")),
+                                                            m("li", m("a[href=#/]", "Consumer"))
+                                                         ]
+                                                     )
+                                                 ]
+                                             )
                                          ),
-                                         m("li[tabindex='0']",
-                                             [
-                                                 m("a.justify-between[href=#/]",
-                                                     [
-                                                         " Company ",
-                                                         m(SVGChevronRight)
-                                                     ]
-                                                 ),
-                                                 m("ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-36",
-                                                     [
-                                                         m("li", m("a[href=#/]", "About")),
-                                                         m("li", m("a[href=#/]", "Blog"))
-                                                     ]
-                                                 )
-                                             ]
+                                         m("li",
+                                             m("details",
+                                                 [
+                                                     m("summary", "Company"),
+                                                     m("ul",
+                                                         [
+                                                            m("li", m("a[href=#/]", "About")),
+                                                            m("li", m("a[href=#/]", "Blog"))
+                                                         ]
+                                                     )
+                                                 ]
+                                             )
                                          ),
                                          m("li", m("a[href=#/]", "Support"))
                                      ]
@@ -69,47 +59,86 @@ import { SVGChevronDown, SVGChevronRight, SVGMenu } from "./svg";
                      m("ul.menu.menu-horizontal.px-1",
                          [
                              m("li[tabindex='0']",
-                                 [
-                                     m("a.justify-between[href=#/]",
-                                         [
-                                             " Partner with us ",
-                                             m(SVGChevronDown)
-                                         ]
-                                     ),
-                                     m("ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-44",
-                                         [
-                                             m("li",
-                                                 m("a[href=#/]", "Contributor")
-                                             ),
-                                             m("li",
-                                                 m("a[href=#/]", "Consumer")
-                                             )
-                                         ]
-                                     )
-                                 ]
+                                 m("details",
+                                     [
+                                         m("summary", "Partner with us"),
+                                         m("ul.p-2.shadow",
+                                             [
+                                                 m("li", m("a[href=#/]", "Contributor")),
+                                                 m("li", m("a[href=#/]", "Consumer"))
+                                             ]
+                                         )
+                                     ]
+                                 )
                              ),
-                             m("li[tabindex='0']",
-                                 [
-                                     m("a.justify-between[href=#/]",
-                                         [
-                                             " Company ",
-                                             m(SVGChevronDown)
-                                         ]
-                                     ),
-                                     m("ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-32",
-                                         [
-                                             m("li", m("a[href=#/]", "About")),
-                                             m("li", m("a[href=#/]", "Blog"))
-                                         ]
-                                     )
-                                 ]
+                             m("li",
+                                 m("details",
+                                     [
+                                         m("summary", "Company"),
+                                         m("ul.p-2.shadow",
+                                             [
+                                                 m("li", m("a[href=#/]", "About")),
+                                                 m("li", m("a[href=#/]", "Blog"))
+                                             ]
+                                         )
+                                     ]
+                                 )
                              ),
+                            //  m("li",
+                            //      m("details",
+                            //          [
+                            //              m("summary", "Partner with us"),
+                            //              m("ul",
+                            //                  [
+                            //                      m("li", m("a[href=#/]", "Contributor")),
+                            //                      m("li", m("a[href=#/]", "Consumer"))
+                            //                  ]
+                            //              )
+                            //          ]
+                            //      )
+                            //  ),
+                            //  m("li[tabindex='0']",
+                            //      [
+                            //          m("a.justify-between[href=#/]",
+                            //              [
+                            //                  " Partner with us ",
+                            //                  m(SVGChevronDown)
+                            //              ]
+                            //          ),
+                            //          m("ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-44",
+                            //              [
+                            //                  m("li",
+                            //                      m("a[href=#/]", "Contributor")
+                            //                  ),
+                            //                  m("li",
+                            //                      m("a[href=#/]", "Consumer")
+                            //                  )
+                            //              ]
+                            //          )
+                            //      ]
+                            //  ),
+                            //  m("li[tabindex='0']",
+                            //      [
+                            //          m("a.justify-between[href=#/]",
+                            //              [
+                            //                  " Company ",
+                            //                  m(SVGChevronDown)
+                            //              ]
+                            //          ),
+                            //          m("ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-32",
+                            //              [
+                            //                  m("li", m("a[href=#/]", "About")),
+                            //                  m("li", m("a[href=#/]", "Blog"))
+                            //              ]
+                            //          )
+                            //      ]
+                            //  ),
                              m("li", m("a[href=#/]", "Support"))
                          ]
                      )
                  ),
                  m("div.navbar-end", [
-                     // m(ButtonMode),
+                    //  m(ButtonMode),
                      m(Button, {
                          label: "Sign up",
                          type: "a[href=#/signup]",

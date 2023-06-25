@@ -13,7 +13,7 @@ import Error404 from "./pages/home/404/404";
 //design 404 page for main page
 
 //change spiiner to pure css. in webpack.build.js
-
+//add fadein via taliwindcss
 
 
 //https://www.npmjs.com/package/daisyui/v/2.52.0
@@ -37,8 +37,8 @@ client.Records.getOne("demo", "RECORD_ID")
 
 
 */
-// import { themeChange } from 'theme-change'
-// themeChange()
+import { themeChange } from 'theme-change'
+themeChange()
 
 // import CheckRates from './pages/check-rates/check-rates';
 // import About from './pages/about/about';

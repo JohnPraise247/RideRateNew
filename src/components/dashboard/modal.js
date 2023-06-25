@@ -1,8 +1,9 @@
-import { createNew, locations } from "../../app/data";
+import { createEntry, deleteEntry, editEntry, locations } from "../../app/data";
+import { Model } from "../../app/model";
 import TextInput from "../input";
 
 
-const CreateLocationModal = {
+const locationModal = {
     oninit:(vnode)=>{
         vnode.state.start = "";
         vnode.state.destination = "";
@@ -10,13 +11,19 @@ const CreateLocationModal = {
         vnode.state.clicked = false
     },
     view:(vnode)=>{
+        var [id, label, createNew] = [
+            "[id='modalLocation']", 
+            "[for='modalLocation']", 
+            Model.modal.location.title == "New location entry"
+        ];
+
         return [
-            m("input.modal-toggle[type='checkbox'][id='modalCreateLocation']"),
+            m("input.modal-toggle[type='checkbox']" + id),
             m("div.modal.modal-bottom.sm:modal-middle",
                 m("div.modal-box.relative",
                     [
-                        m("label.btn.btn-primary.text-white.btn-sm.btn-circle.absolute.right-2.top-2[for='modalCreateLocation']", "✕"),
-                        m("h3.text-lg.font-bold", "New location Entry"),
+                        m("label.btn.btn-primary.text-white.btn-sm.btn-circle.absolute.right-2.top-2" + label, "✕"),
+                        m("h3.text-lg.font-bold", Model.modal.location.title),
                         m(".space-y-2", [
                             m(".flex", [
                                 m(TextInput, {
@@ -26,9 +33,11 @@ const CreateLocationModal = {
                                     type: "text",
                                     className: vnode.state.start.trim().length == 0 && vnode.state.clicked ? "input-error" : "",
                                     classNameMain: ".mr-1",
-                                    value: vnode.state.start,
+                                    value: createNew ? vnode.state.start : Model.modal.location.start,
                                     oninput: (e) => { 
-                                        vnode.state.start = e.target.value;
+                                        createNew 
+                                        ? vnode.state.start = e.target.value 
+                                        : Model.modal.location.start = e.target.value
                                         vnode.state.clicked = false;
                                     }
                                 }),
@@ -36,35 +45,45 @@ const CreateLocationModal = {
                                     id: "inputDestination",
                                     labelA: "Destination",
                                     className: vnode.state.destination.trim().length == 0 && vnode.state.clicked ? "input-error" : "",
+                                    type: "text",
                                     classNameMain: ".ml-1",
-                                    value: vnode.state.destination,
+                                    value: createNew ? vnode.state.destination : Model.modal.location.destination,
                                     oninput: (e) => { 
-                                        vnode.state.destination = e.target.value;
+                                        createNew 
+                                        ? vnode.state.destination = e.target.value 
+                                        : Model.modal.location.destination = e.target.value
                                         vnode.state.clicked
-                                    },
-                                    type: "text"
+                                    }
                                 })
                             ]),
                             m(TextInput, {
                                 id: "inputDescription",
                                 labelA: "Description",
-                                value: vnode.state.description,
-                                oninput: (e) => vnode.state.description = e.target.value,
-                                type: "text"
-                            })
+                                type: "text",
+                                value: createNew ? vnode.state.description : Model.modal.location.description,
+                                oninput: (e) => createNew ? vnode.state.description = e.target.value : Model.modal.location.description = e.target.value
+                            }),
+                            m(".flex.overflow-x.grid.gap-2.grid-cols-1.md:grid-cols-2",[
+                                (!createNew) ? m("span.badge.bg-gray-100.border-0.text-gray-400.text-xs", "Date Created:" + Model.modal.location.dateCreated) : null,
+                                (!createNew && Model.modal.location.dateUpdated != "") ? m("span.badge.bg-gray-100.border-0.text-gray-400.text-xs.ml-auto", "Date Updated:" + Model.modal.location.dateUpdated) : null
+                            ])
+
+                            
                         ]),
                         m(".flex.justify-between.items-center", [
                             m("div.modal-action",
-                                m("label.btn.btn-ghost[for='modalCreateLocation']", "Cancel")
+                                m("label.btn.btn-ghost" + label, "Cancel")
                             ),
                             m("div.modal-action",
                                 m("label.btn.btn-primary.text-white" + (
-                                    vnode.state.start.trim().length > 0 && vnode.state.destination.trim().length > 0 ? "[for='modalCreateLocation']" : ""
+                                    createNew && vnode.state.start.trim().length > 0 && vnode.state.destination.trim().length > 0 ? label 
+                                    : !createNew && Model.modal.location.start.trim().length > 0 && Model.modal.location.destination.trim().length > 0 ? label : ""
                                 ), {
                                     onclick:()=>{
                                         vnode.state.clicked = true;
-                                        vnode.state.start.trim().length > 0 && vnode.state.destination.trim().length > 0 ? (
-                                            createNew(
+
+                                        createNew && vnode.state.start.trim().length > 0 && vnode.state.destination.trim().length > 0 ? (
+                                            createEntry(
                                                 vnode.state.start.trim(),
                                                 vnode.state.destination.trim(),
                                                 vnode.state.description.trim()
@@ -72,9 +91,16 @@ const CreateLocationModal = {
                                             vnode.state.clicked = false,
                                             vnode.state.start = vnode.state.destination = vnode.state.description = ""
                                         )
+                                        :!createNew && Model.modal.location.start.trim().length > 0 && Model.modal.location.destination.trim().length > 0 ? (
+                                            editEntry(locations),
+                                            vnode.state.clicked = false,
+                                            Model.modal.location.start = Model.modal.location.destination = Model.modal.location.description = ""
+                                        )
                                         : null
                                     }
-                                }, "Create")
+                                }, (
+                                    createNew ? "Create" : "Save"
+                                ))
                             )
                         ])
                     ]
@@ -84,17 +110,38 @@ const CreateLocationModal = {
     }
 }
 
-/* if($("#locationInput1").val().trim().length > 0 && $("#locationInput2").val().trim().length > 0){
-              if(m.route.param("urlB") == "new"){
-                    Model.locations.list.push({
-                      from: $("#locationInput1").val(), 
-                      to: $("#locationInput2").val(), 
-                      desc:"No Descriptions . . ."
-                    })
-                    m.route.set(path+"/location", null);
-                    addSuccess('Location has been created');
-                    /*window.location.assign('/#/u/location')*/     
-               
+
+const deleteModal = {
+    view:()=>{
+        var [id, label] = [ "[id='modalDelete']", "[for='modalDelete']"];
+
+        return [
+            m("input.modal-toggle[type='checkbox']" + id),
+            m("div.modal.modal-bottom.sm:modal-middle",
+                m("div.modal-box.relative",
+                    [
+                        m("label.btn.btn-error.text-white.btn-sm.btn-circle.absolute.right-2.top-2" + label, "✕"),
+                        m("h3.text-lg.font-bold.text-error", "Delete entry?"),
+                        m(".space-y-2", [
+                            m("p.text-error", {tag:"br"},"Are  you sure you want to delete this entry?"),
+                            m("small.text-error", "This action cannot be undone")
+                        ]),
+                        m(".flex.justify-between.items-center", [
+                            m("div.modal-action",
+                                m("label.btn.btn-ghost" + label, "Cancel")
+                            ),
+                            m("div.modal-action",
+                                m("label.btn.btn-error.text-white" + label, {
+                                    onclick: () => deleteEntry(locations, Model.modal.location.id)
+                                }, "Delete" )
+                            )
+                        ])
+                    ]
+                )
+            )
+        ]
+    }
+}
 
 const Modal = {
     view:()=>{
@@ -117,7 +164,7 @@ const Modal = {
             //         ]
             //     )
             // )
-            // m("label.btn[for='modalCreateLocation']",
+            // m("label.btn[for='modalLocation']",
             //     "opwwfl"
             // ),
             //modal-bottom sm:modal-middle
@@ -151,7 +198,8 @@ const Modal = {
                     )
                 )
             ),*/
-            m(CreateLocationModal)
+            m(locationModal),
+            m(deleteModal)
                        
                         
                         // m("p.py-4",

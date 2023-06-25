@@ -5,7 +5,7 @@ const Accordion = {
         : label == "Rejected" ? color = "text-red-500"
         : null
 
-        return m(".mt-3.p-5.rounded-lg.bg-white.overflow-hidden", {
+        return m(".mt-3.p-5.rounded-lg.bg-base-100.overflow-hidden", {
             class: className
         },
             m("details.group" + (open == true ? "[open]" : ""),

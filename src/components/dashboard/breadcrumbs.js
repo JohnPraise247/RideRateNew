@@ -1,5 +1,5 @@
 import { locations } from "../../app/data";
-import { Model } from "../../app/model";
+import { Model, getUsertype, isAdmin } from "../../app/model";
 import Select from "./select";
 import { 
     SVGAnalytics,
@@ -27,7 +27,7 @@ const BreadCrumbs = {
         var url = [ "dashboard", m.route.param("urlA") ]
 
         return m(".flex", [
-            m("div.text-sm.breadcrumbs.rounded-lg.bg-white.px-4.py-3.shadow-sm.mr-3.w-full",//bg-gray-50
+            m("div.text-sm.breadcrumbs.rounded-lg.bg-base-100.px-4.py-3.shadow-sm.mr-3.w-full",//bg-gray-50
             m("ul",
                 [
                     url.map((e)=>{
@@ -46,16 +46,23 @@ const BreadCrumbs = {
             )
         ),
         locations.data.length > 0 ? m(Select, {
-            options: usertype == "admin" ? Model.modeAdminList : Model.modeList,//"edit"
+            options: isAdmin() ? Model.modeAdminList : Model.modeList,//"edit"
             oncreate: () => {
-                m.route.set((usertype == "admin" ? "/admin/" : "/u/") + m.route.param("urlA"), { 
-                    mode: (Model.modeSelect == 0 ? Model.modeList[0] : Model.modeList[1]) 
+                m.route.set(getUsertype() + "/" + m.route.param("urlA"), { 
+                    mode: (
+                        Model.modeSelect == 0 
+                        ? Model.modeList[0] 
+                        : isAdmin() && Model.modeSelect == 1 ? Model.modeList[1]
+                        : isAdmin() && Model.modeSelect == 2 ? Model.modeList[2]
+                        : Model.modeList[1]
+                    ) 
                 }, { replace: true })
             },
             onchange: (e)=>{
-                m.route.set((usertype == "admin" ? "/admin/" : "/u/") + m.route.param("urlA"), { mode: e.target.value.toLowerCase() })
-                e.target.value == Model.modeList[0].charAt(0).toUpperCase() + Model.modeList[0].slice(1) ? Model.modeSelect = 0 
-                    : e.target.value == Model.modeList[1].charAt(0).toUpperCase() + Model.modeList[1].slice(1) ? Model.modeSelect = 1 
+                m.route.set(getUsertype() + "/" + m.route.param("urlA"), { mode: e.target.value.toLowerCase() })
+                e.target.value == Model.modeList[0].charAt(0).toUpperCase() + Model.modeList[0].slice(1) 
+                ? Model.modeSelect = 0 
+                : e.target.value == Model.modeList[1].charAt(0).toUpperCase() + Model.modeList[1].slice(1) ? Model.modeSelect = 1 
                 : Model.modeSelect = 2
             }
         }) :null

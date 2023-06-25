@@ -1,3 +1,5 @@
+import { Model } from "./model";
+
 export var locations = {
     data: [
         {
@@ -15,7 +17,7 @@ export var locations = {
         {
             id: "kemf3jwwndb",
             start: "Ikole",
-            destination: "Lagos",
+            destination: "Lagos  truncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetrun",
             description: "truncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncatetruncate",
             isDelete: false,
             status: "pending",
@@ -135,7 +137,7 @@ export function getLength(array, status) {
     return array[status];
 }
 
-export const createNew = (a, b, desc) => {
+export const createEntry = (a, b, desc) => {
     var param = m.route.param("urlA");
 
     if (param == "locations") {
@@ -180,4 +182,33 @@ export const createNew = (a, b, desc) => {
         })
         m.route.set((url == "admin" ? "/admin" : "/u") + "/rates/new")
     }
+}
+
+export const editEntry = (array) => {
+    var urlA = m.route.param("urlA");
+    var id = Model.modal.location.id;
+
+    if (urlA == "locations") {
+        array.data.map((i, j) => {
+            if (i.id == id) {
+                locations.data[j].start = Model.modal.location.start;
+                locations.data[j].destination = Model.modal.location.destination;
+                locations.data[j].description = Model.modal.location.description;
+                locations.data[j].status = "pending";
+                locations.data[j].dateUpdated = new Date().toLocaleString();
+                // m.route.get().slice(1, 6) == "admin" ? (
+                //     localStorage.setItem(Model.localStorage.name, JSON.stringify({ id, status })
+                //     )) : localStorage.setItem(Model.localStorage.name, JSON.stringify({ id }))
+            }
+        })
+    }
+}
+
+export const deleteEntry = (array, id) => {
+    var index = getIndexByID(id, array.data);
+    array.data.splice(index, 1);
+
+    //  Model.selectAll ? m.route.set(getUsertype() + "/rates", null, { replace: true })
+    // : m.route.set(path + "/rates", { selected: Model.data.status.charAt(0).toUpperCase() + Model.data.status.slice(1) }, { replace: true })
+// addSuccess('Deleted successfully');
 }

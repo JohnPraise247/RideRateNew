@@ -77,16 +77,16 @@ const dashboardSection = {
 
             m(".grid.grid-cols-1.mt-2.md:grid-cols-2.gap-6.mt-6.mb-6",
             [
-            m("div.bg-white.shadow-lg.shadow-gray-200.rounded-2xl.p-4.",
+                m("div.bg-base-100.shadow.rounded-2xl.p-4.",
                 [
                     m("div.flex.justify-between.items-center.mb-4",
                         [
                             m("div",
                                 [
-                                    m("h3.mb-2.text-xl.font-bold.text-gray-900",
+                                    m("h3.mb-2.text-xl.font-bold.stat-title",
                                         "Sales by Country"
                                     ),
-                                    m("span.text-base.font-normal.text-gray-500",
+                                    m("span.text-base.font-normal.stat-desc",
                                         "This is a list of latest country"
                                     )
                                 ]
@@ -496,12 +496,12 @@ const dashboardSection = {
                     )
                 ]
                 ), m("div.w-full.xl:w-8/12.px-4",
-                    m("div.relative.flex.flex-col.min-w-0.break-words.w-full.mb-8.shadow-lg.rounded-lg.bg-white.text-blueGray-700",
+                    m("div.relative.flex.flex-col.min-w-0.break-words.w-full.mb-8.shadow-lg.rounded-lg.bg-base-100",
                         [
                             m("div.px-6.py-4.border-0",
                                 m("div.flex.flex-wrap.items-center",
                                     m("div.relative.w-full.max-w-full.flex-grow.flex-1",
-                                        m("h3.font-bold.text-lg.text-blueGray-700",
+                                        m("h3.font-bold.text-lg",
                                             "Page visits"
                                         )
                                     )
@@ -511,7 +511,7 @@ const dashboardSection = {
                                 m("table.items-center.w-full.bg-transparent.border-collapse",
                                     [
                                         m("thead",
-                                            m("tr",
+                                            m("tr.stat-title",
                                                 [
                                                     m("th.px-6.align-middle.border.border-solid.py-3.text-xs.uppercase.border-l-0.border-r-0.whitespace-nowrap.font-bold.text-left.bg-blueGray-100.text-blueGray-500.border-blueGray-200",
                                                         "Page name"
@@ -692,11 +692,11 @@ const dashboardSection = {
 
 const Main = {
     view: ({ state: { hash = m.route.param("urlA") || "dashboard", usertype = m.route.get().slice(1, 6) }}) =>{
-        return m(".drawer.drawer-mobile", [
+        return m(".drawer.lg:drawer-open.h-screen", [//.drawer-mobile
             m("input.drawer-toggle[id='left-sidebar-drawer'][type='checkbox']"),
-            m(".drawer-content.flex.flex-col", [
+            m(".drawer-content.flex.flex-col.items-center.justify-center", [
                 m(NavBar),
-                m("main.flex-1.overflow-y-auto.py-8.px-3.bg-base-200.md:px-6", [
+                m("main.flex-1.overflow-y-auto.w-full.pt-8.pb-20.px-3.bg-base-200.md:px-6", [
                     hash != "dashboard"?m(BreadCrumbs) : null,
                     hash == "dashboard"? m(dashboardSection)
                     :hash == "locations"? m(locationSection)

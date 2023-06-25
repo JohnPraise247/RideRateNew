@@ -42,6 +42,17 @@ export const ButtonClose = {
     }
 }
 
+// export const labelButton = {
+//     view: ({ attrs: { id, onclick, svg } }) => {
+//         return m("label.btn.btn-edit.rounded-lg.border.border-gray.mt-3.ml-2.justify-center.items-center.btn-sm.md:h-10", {
+//             id,
+//             onclick,
+//         },
+//             svg
+//         )
+//     }
+// }
+
 /* m("label.swap", 
                 [
                     m("input[type='checkbox']"),
@@ -54,7 +65,7 @@ export const ButtonAvatar = {
         return m("div.dropdown.dropdown-end.ml-4",
             [
                 m("label.btn.btn-ghost.btn-circle.avatar[tabindex='0']",
-                    m("div.w-10.rounded-full.ring.ring-secondary.ring-offset-base-100.ring-offset-2",
+                    m("div.w-10.rounded-full.ring.ring-primary.ring-offset-base-100.ring-offset-1",//
                         m("img[src='"+src+"'][alt='profile']")
                     )
                 ),

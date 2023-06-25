@@ -2,7 +2,7 @@ import { Model } from "../../app/model"
 
 const Select = {
     view:({ attrs: { label , options, oncreate, onchange }})=>{
-        return m("select.select.select-bordered.max-w-xs", {
+        return m("select.select.select-bordered.max-w-xs.shadow-sm", {
             oncreate:()=> oncreate(),
             onchange:(e)=> onchange(e),
             // onupdate:()=>{
