@@ -14,16 +14,13 @@ const NavBar = {
                     m("label.btn.btn-primary.text-white.drawer-button.lg:hidden[for='left-sidebar-drawer']",
                         m(SVGMenu2, { className: "h-5 inline-block w-5" })
                     ),
-                    // m(ButtonIcon, {
-                    //     svg: SVGSearch
-                    // }),
-                    m(SVGSearch, { className: "mx-3 w-5 h-5"}),
+                    m(SVGSearch, { className: "mx-3 w-5 h-5 hidden lg:block"}),
                     m(TextInput, {
                         id: "searchInput",
                         type: "text",
                         value: val,
                         // classNameMain:"mr-8",
-                        className: "input-sm input-ghost  sm:max-w-xs md:max-w-full",//hidden
+                        className: "input-sm input-ghost hidden lg:block",//hidden  sm:max-w-xs md:max-w-full
                         placeholder: "Type to search",
                         oninput: (e) => val = e.target.value
                     }),
@@ -42,7 +39,7 @@ const NavBar = {
                         }),
                         m(ButtonIcon, {
                             svg: SVGSearch,
-                            className: "sm:hidden md:hidden",
+                            className: "ml-2 lg:hidden",
                             onclick: () => console.log("Pressed Search")
                         }),
                         m(ButtonAvatar, {

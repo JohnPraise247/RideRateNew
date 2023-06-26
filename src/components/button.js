@@ -18,7 +18,7 @@ export const Button = {
 
 export const ButtonIcon = {
     view: ({ attrs: { svg, indicator, className = "btn-ghost", sr, onclick } }) => {
-        return m("button.btn.btn-circle", {
+        return m("button.btn.btn-circle.btn-ghost", {
             class: className,
             onclick
         },
@@ -62,7 +62,7 @@ export const ButtonClose = {
 
 export const ButtonAvatar = {
     view: ({ attrs: { src } }) => {
-        return m("div.dropdown.dropdown-end.ml-4",
+        return m("div.dropdown.dropdown-end.ml-2",
             [
                 m("label.btn.btn-ghost.btn-circle.avatar[tabindex='0']",
                     m("div.w-10.rounded-full.ring.ring-primary.ring-offset-base-100.ring-offset-1",//
@@ -133,14 +133,14 @@ export const ButtonOptions = {
 
 export const ButtonMode = {
     view: ({ attrs: { className } }) => {
-        return m(".btn.btn-circle.btn-ghost.mr-2", {
+        return m("div", {
             class: className
         },
-        m("label.swap.swap-rotate",
+            m("label.swap.swap-rotate.btn.btn-ssm.btn-circle.btn-ghost",
             [
                 m("input[type='checkbox'][data-toggle-theme='themedark,themelight']"),
-                m(SVGSun),
-                m(SVGMoon)
+                m(SVGSun, {className: "w-5 h-5"}),
+                m(SVGMoon, {className: "w-5 h-5"})
             ]
         ))
     }

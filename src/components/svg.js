@@ -62,21 +62,21 @@ export const SVGQuestionMark = {
     }
 }
 
-export const SVGChevronRight = {
-    view:()=>{
-        return m("svg.fill-current[xmlns='http://www.w3.org/2000/svg'][width='24'][height='24'][viewBox='0 0 24 24']",
-            m("path[d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z']")
-        )
-    }
-}
+// export const SVGChevronRight = {
+//     view:()=>{
+//         return m("svg.fill-current[xmlns='http://www.w3.org/2000/svg'][width='24'][height='24'][viewBox='0 0 24 24']",
+//             m("path[d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z']")
+//         )
+//     }
+// }
 
-export const SVGChevronDown = {
-    view:()=>{
-        return m("svg.fill-current[xmlns='http://www.w3.org/2000/svg'][width='20'][height='20'][viewBox='0 0 24 24']",
-            m("path[d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z']")
-        )
-    }
-}
+// export const SVGChevronDown = {
+//     view:()=>{
+//         return m("svg.fill-current[xmlns='http://www.w3.org/2000/svg'][width='20'][height='20'][viewBox='0 0 24 24']",
+//             m("path[d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z']")
+//         )
+//     }
+// }
 
 export const SVGDollar = {
     view: ({ attrs: { className } }) => {
@@ -239,6 +239,14 @@ export const SVGShare = {
     }
 }
 
+
+export const SVGUser = {
+    view: () => {
+        return m("svg.w-6.h-6[xmlns='http://www.w3.org/2000/svg'][fill='none'][viewBox='0 0 24 24'][stroke-width='1.5'][stroke='currentColor']",
+            m("path[stroke-linecap='round'][stroke-linejoin='round'][d='M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z']")
+        )
+    }
+}
 
 export const SVGUsers = {
     view: ({ attrs: { className } }) => {

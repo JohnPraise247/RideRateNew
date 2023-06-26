@@ -6,7 +6,8 @@ import {
     SVGLocation,
     SVGCog,
     SVGUsers,
-    SVGAnalytics
+    SVGAnalytics,
+    SVGUser
  } from "../svg";
 
 const List = {
@@ -28,24 +29,25 @@ const Drawer = {
         return m("div.drawer-side.z-50",
             [
                 m("label.drawer-overlay[for='left-sidebar-drawer']"),
-                m("ul.menu.p-4.w-80.md:w-64.h-full.bg-base-100.text-base-content",//.fixed.top-0.bottom-0
+                m("ul.menu.px-4.w-80.md:w-64.h-full.bg-base-100.text-base-content",//.fixed.top-0.bottom-0
                     [
-                        // m(ButtonClose, {
-                        //     svg: SVGClose,
-                        //     className: "bg-base-300 z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden"
-                        // }),
-                        m(".flex",[
-                            m("li.mb-2.font-semibold.text-xl.md:text-2xl",
+                        m(".flex.mb-3", [
+                            m(".transition-all.hover:bg-base-300.pt-2.rounded-lg.font-semibold.text-xl.md:text-2xl",
                                 m("a.flex-0.px-2[href='#" + getUsertype() + "/dashboard'][aria-current=page][aria-label=Homepage]",
-                                    m(".font-title.inline-flex.items-center.text-lg.md:text-2xl", [
-                                        m("img.w-8.h-8.md:w-10.md:h-10[src='./favicon.png'][alt='RideRate Logo']"),
+                                    m(".font-title.inline-flex.items-center.text-lg.md:text-xl", [
+                                        m("img.w-8.h-8[src='./favicon.png'][alt='RideRate Logo']"),
                                         m("span.capitalize", "Ride"),
                                         m("span.text-primary.capitalize", "Rate")
                                     ])
                                 )
                             ),
-                            m(ButtonMode, {className: "ml-auto"})
+                            m(ButtonMode, { className: "ml-auto" })
                         ]),
+                        // m(ButtonClose, {
+                        //     svg: SVGClose,
+                        //     className: "bg-base-300 z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden"
+                        // }),
+                        
                         
                         // m("li.mb-2.font-semibold.text-xl.md:text-2xl",
                         //     m("a[href='#/" + (usertype == "admin" ? usertype : "u") + "/dashboard']",
@@ -55,6 +57,7 @@ const Drawer = {
                         //         ]
                         //     )
                         // ),
+                        m(".text-gray-500.mt-5.mb-2", "Main"),
                         m(List, {
                             svg: SVGDashboard,
                             label: "Dashboard",
@@ -85,6 +88,13 @@ const Drawer = {
                             url: "/analytics",
                             active: hash == "analytics" ? true : false
                         }) : null,
+                        m(".text-gray-500.mt-5.mb-2", "Settings"),
+                        m(List, {
+                            svg: SVGUser,
+                            label: "Profile",
+                            url: "/profile",
+                            active: hash == "profile"? true : false
+                        }),
                         m(List, {
                             svg: SVGCog,
                             label: "Settings",

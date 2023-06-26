@@ -16,7 +16,7 @@ export const StatsCard = {
 
 export const StatsRow = {
     view: ({ state: { usertype = m.route.get().slice(1, 6) }, attrs: { label, value = "" , svg, info = "" } }) => {
-        return m("div.stats.shadow.mt-6.w-full.py-4",
+        return m("div.stats.stats-vertical.shadow.mt-6.py-4.w-full.md:stats-horizontal",//
             [
                 m("div.stat",
                     [
