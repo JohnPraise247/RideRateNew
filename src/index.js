@@ -1,13 +1,29 @@
-import { themeChange } from 'theme-change'; themeChange()
+import { themeChange } from 'theme-change'; 
 import Auth from "./app/auth";
+// const { toast, snackbar } = require('tailwind-toast')
+// import toast from 'svelte-french-toast';
+
+// import { toast } from 'tailwind-toast';
+// import { startWindToast } from "@mariojgt/wind-notify/packages/index";
 import Home from "./pages/home/home";
 import Signup from './pages/home/signup/signup';
 import Login from './pages/home/login/login';
 import ForgotPwd from './pages/home/forgot-pwd/forgot-pwd';
 import { Dashboard } from './pages/dashboard/dashboard';
 import Error404 from "./pages/home/404/404";
+themeChange()
+// toast().default('Title', 'Message!').show()
+
+// var title = "Success"
+// var message = "Hello world"
+// var alertType = "success"
+// var time = 100
+// var position = "right"
+// startWindToast(title, message, alertType, time, position)
 
 
+//mode btn changes unexpectedly on switch btn links
+// toast.success("It works")
 
 // Todo
 //check if loading daisyui is available

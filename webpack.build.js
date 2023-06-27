@@ -75,7 +75,7 @@ module.exports = {
 
 
 var html = `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="themelight">
 <head>
    <meta name="title" content="RideRate">
    <meta charset="utf-8">

@@ -29,7 +29,7 @@ const Drawer = {
         return m("div.drawer-side.z-50",
             [
                 m("label.drawer-overlay[for='left-sidebar-drawer']"),
-                m("ul.menu.px-4.w-80.md:w-64.h-full.bg-base-100.text-base-content",//.fixed.top-0.bottom-0
+                m("ul.menu.px-4.w-56.md:w-64.h-full.bg-base-100.text-base-content",//.fixed.top-0.bottom-0
                     [
                         m(".flex.mb-3", [
                             m(".transition-all.hover:bg-base-300.pt-2.rounded-lg.font-semibold.text-xl.md:text-2xl",
