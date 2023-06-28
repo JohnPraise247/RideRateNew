@@ -1,4 +1,3 @@
-import { themeChange } from "theme-change"
 import { Model } from "../app/model"
 import Spinner from "./spinner"
 import { SVGMoon, SVGSun } from "./svg"
