@@ -1,4 +1,4 @@
-import { themeChange } from 'theme-change'; 
+// import { themeChange } from 'theme-change'; 
 import Auth from "./app/auth";
 // const { toast, snackbar } = require('tailwind-toast')
 // import toast from 'svelte-french-toast';
@@ -11,7 +11,8 @@ import Login from './pages/home/login/login';
 import ForgotPwd from './pages/home/forgot-pwd/forgot-pwd';
 import { Dashboard } from './pages/dashboard/dashboard';
 import Error404 from "./pages/home/404/404";
-themeChange()
+import { themeChange } from "theme-change";
+
 // toast().default('Title', 'Message!').show()
 
 // var title = "Success"
@@ -182,3 +183,5 @@ m.route(document.body, "/", {
         //         else return Home
         //     }
 });
+
+themeChange()

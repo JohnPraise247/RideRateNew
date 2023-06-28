@@ -22,6 +22,18 @@ export const SVGTick = {
     view: ({ state: { defaults = ".w-6.h-6" } ,attrs: { className = "" } }) => {
         className != null? defaults = "" : null;
         
+        return m("svg" + defaults +"[xmlns='http://www.w3.org/2000/svg'][fill='none'][viewBox='0 0 24 24'][stroke-width='1.5'][stroke='currentColor']", {
+            class: className
+        },
+            m("path[stroke-linecap='round'][stroke-linejoin='round'][d='M4.5 12.75l6 6 9-13.5']")
+        )
+    }
+}
+
+export const SVGTickCircle = {
+    view: ({ state: { defaults = ".w-6.h-6" } ,attrs: { className = "" } }) => {
+        className != null? defaults = "" : null;
+        
         return m("svg"+defaults+"[xmlns='http://www.w3.org/2000/svg'][fill='none'][viewBox='0 0 24 24'][stroke-width='1.5'][stroke='currentColor']", {
             class: className
         },

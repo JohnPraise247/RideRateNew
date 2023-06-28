@@ -138,7 +138,7 @@ export const ButtonMode = {
         },
             m("label.swap.swap-rotate.btn.btn-ssm.btn-circle.btn-ghost",
             [
-                m("input[type='checkbox'][data-toggle-theme='themedark,themelight']"),
+                m("input[type='checkbox'][data-toggle-theme='dark,light']"),
                 m(SVGSun, {className: "w-5 h-5"}),
                 m(SVGMoon, {className: "w-5 h-5"})
             ]

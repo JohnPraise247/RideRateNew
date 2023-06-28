@@ -1,12 +1,20 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
         "./src/**/*.js"
     ],
     // darkMode: ["class", '[data-theme="dark"]'],
-    // theme: {
-    //     extend: {},
-    // },
+    theme: {
+        screens: {
+            xs: '475px',
+            // xs: '375px',
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px'
+        }
+        // extend: {},
+    },
     plugins: [require("daisyui")],
     // extend:{
     //     card: {
@@ -33,7 +41,7 @@ module.exports = {
             //     },
             // }, 
             {
-                themelight: {
+                light: {
                     primary: "#66cc8a",//"#32bb7a",()
                     secondary: "#f3f4f6",
                     error: "#f87272",
@@ -88,6 +96,19 @@ module.exports = {
                         "background-color": "#ea5234",
                         "border-color": "#ea5234",
                     },
+                    ".toast-success":{
+                        "background-color": "#D1FAE5",
+                        "color": "#10B981"
+                    },
+                    ".toast-warn":{
+                        "background-color": "#F59E0B",
+                        "color": "#FEF3C7"
+                    },
+                    ".toast-danger":{
+                        "background-color": "#EF4444",
+                        "color": "#FEE2E2"
+                    }
+                   
 
 
                     // ".stats":{
@@ -101,7 +122,7 @@ module.exports = {
                 },
             }, 
             {
-                themedark: {
+                dark: {
                     primary: "#66cc8a",//"#32bb7a",   //#1eb854
                     // primary: "#66cc8a",//"#32bb7a",
                     // secondary: "#1db990",
@@ -110,9 +131,21 @@ module.exports = {
                     accent: "#f04050",//93ffa1
                     neutral: "#3d4451",
                     "base-100": "#212121",//grey
-                    ".btn-white": "#ffffff"
+                    ".btn-white": "#ffffff",
                     // "base-100": "#18342b",
                     // "base-100": "#171212",
+                    ".toast-success": {
+                        "background-color": "#065F46",
+                        "color": "#A7F3D0"
+                    },
+                    ".toast-warn": {
+                        "background-color": "#B45309",
+                        "color": "#FDE68A"
+                    },
+                    ".toast-danger": {
+                        "background-color": "#991B1B",
+                        "color": "#FECACA"
+                    }
                 },
             }, 
             // "emerald",
