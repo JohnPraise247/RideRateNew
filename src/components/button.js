@@ -1,3 +1,4 @@
+import { themeChange } from "theme-change"
 import { Model } from "../app/model"
 import Spinner from "./spinner"
 import { SVGMoon, SVGSun } from "./svg"
@@ -131,16 +132,54 @@ export const ButtonOptions = {
     }
 }
 
+// themeChange()
 export const ButtonMode = {
-    view: ({ attrs: { className } }) => {
-        return m("div", {
-            class: className
-        },
+    view: () => {
+    // view: ({ attrs: { className = "" } }) => {
+        return m(".ml-auto", 
             m("label.swap.swap-rotate.btn.btn-ssm.btn-circle.btn-ghost",
             [
-                m("input[type='checkbox'][data-toggle-theme='dark,light']"),
-                m(SVGSun, {className: "w-5 h-5"}),
-                m(SVGMoon, {className: "w-5 h-5"})
+                m("button[data-toggle-theme='dark,light'][data-act-class=ACTIVECLASS]", {
+                    oncreate:()=>{
+                        localStorage.theme === 'dark' ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
+                    },
+                    onclick:()=>{
+                        if (localStorage.theme === 'dark') {
+                            window.localStorage.setItem('theme', 'light');
+                            document.documentElement.setAttribute("data-theme", "light");
+                        } else {
+                            window.localStorage.setItem('theme', 'dark'); 
+                            document.documentElement.setAttribute("data-theme", "dark");
+                        }
+                        // var env = process.env.NODE_ENV || 'development';
+
+                        //darkmode doesnt work on production so i used this hack
+                        // if(e.target.checked && env == "production"){
+                        //     document.documentElement.setAttribute("data-theme", "dark");
+                        //     localStorage.setItem("theme", "dark");
+                        // } else if (!e.target.checked && env == "production") {
+                        //     document.documentElement.setAttribute("data-theme", "light");
+                        //     localStorage.setItem("theme", "light");
+                        // }
+
+                        // m.redraw();
+                    }
+                }),
+               /* localStorage.theme == "dark" ? //use this hack because of the bug ini theme changer, it doesnt rotate
+                ([
+                    m(SVGSun, { className: localStorage.theme == "dark" ? "swap-on" : "swap-off" }),
+                    m(SVGSun, { className: localStorage.theme == "dark" ? "swap-off" : "swap-on" }),
+                ]):([
+                    m(SVGMoon, { className: localStorage.theme == "dark" ? "swap-off" : "swap-on" }),
+                    m(SVGMoon, { className: localStorage.theme == "dark" ? "swap-on" : "swap-off" }),
+                ])*/
+                // m(SVGMoon, { className: "swap-on" }) : m(SVGMoon, { className: "swap-off" })
+                // m(SVGSun, {className: (localStorage.theme == "light" ? "swap-on" :"swap-off")}),
+                // m(SVGMoon, { className: (localStorage.theme == "light" ? "swap-off" : "swap-on") }),
+                
+               
+                m(SVGSun, {className: (localStorage.theme == "light" ? "swap-on" :"swap-off")}),
+                m(SVGMoon, {className: (localStorage.theme == "light" ? "swap-off" :"swap-on")})
             ]
         ))
     }

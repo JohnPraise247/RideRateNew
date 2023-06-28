@@ -11,7 +11,8 @@ import Login from './pages/home/login/login';
 import ForgotPwd from './pages/home/forgot-pwd/forgot-pwd';
 import { Dashboard } from './pages/dashboard/dashboard';
 import Error404 from "./pages/home/404/404";
-import { themeChange } from "theme-change";
+
+// dark mode doesnt work on build but works on dev ()
 
 // toast().default('Title', 'Message!').show()
 
@@ -183,5 +184,3 @@ m.route(document.body, "/", {
         //         else return Home
         //     }
 });
-
-themeChange()

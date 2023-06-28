@@ -93,6 +93,7 @@ var html = `<!DOCTYPE html>
    <link href="./build/app.css" rel="stylesheet">
    <title>RideRate</title>
 
+
     <!-- Google tag (gtag.js) 
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-14WLRRD1SK"></script>
    <script>

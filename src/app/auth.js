@@ -7,7 +7,7 @@ const Auth = {
     //User Auth
     email: "john@doe.com",
     username: "John Doe",
-    password: "12345678",
+    password: "P@ssw0rd",
     signin: !false,
     adminSignin: false,
     accountCreated: false,

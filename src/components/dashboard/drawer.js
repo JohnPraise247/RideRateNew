@@ -41,7 +41,7 @@ const Drawer = {
                                     ])
                                 )
                             ),
-                            m(ButtonMode, { className: "ml-auto" })
+                            m(ButtonMode)
                         ]),
                         // m(ButtonClose, {
                         //     svg: SVGClose,

@@ -3,7 +3,7 @@ import Accordion from "../../../components/dashboard/accordion";
 import emptyState from "../../../components/dashboard/emptystate";
 import { Fab2 } from "../../../components/dashboard/fab";
 import { StatsRow } from "../../../components/dashboard/stats";
-import { SVGExclamation, SVGTick, SVGTimes } from "../../../components/svg";
+import { SVGExclamation, SVGTickCircle, SVGTimes } from "../../../components/svg";
 import { getLength, locations } from "../../../app/data";
 import { Model, isAdmin } from "../../../app/model";
 import List from "../../../components/dashboard/list";
@@ -21,14 +21,14 @@ const sectionMain = {
           "Total Rejected"
         ],
         value: [getLength(locations, "approved"), getLength(locations, "pending"), getLength(locations, "rejected") ],
-        svg: [SVGTick, SVGExclamation, SVGTimes]
+        svg: [SVGTickCircle, SVGExclamation, SVGTimes]
         // info: [ "","","" ]
       }),
       m(".mt-8"),
       m(Accordion, {
         label: "Approved",
         children: m(List, {array: locations, status: "approved"}),
-        svg: SVGTick,
+        svg: SVGTickCircle,
         // className: "border border-green-500",
         className: "shadow",
         open: getLength(locations, "approved") > 0 ? true : false
