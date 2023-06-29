@@ -1,6 +1,7 @@
 // import { Sidebar, Sections } from './components';
 // import { Notifications } from '../../notification';
 
+import { Model } from "../../app/model"
 import Main from "../../components/dashboard/main"
 import Modal from "../../components/dashboard/modal"
 import Toast from "../../components/dashboard/toast"
@@ -11,9 +12,11 @@ export const Dashboard = {
     return [
       m(Main),
       m(Modal),
-      m(".toast.toast-top.toast-end.z-40.pt-20", m(Toast, {
-        type: "success",
-      } )), //Toast main layout
+      m(".toast.toast-top.toast-end.z-40.pt-20", [
+        Model.toast.map((e)=>{
+          return m(Toast, {type:e.type, text:e.text})
+      })
+    ]), //Toast main layout
       // div..fixed.overflow-hidden.z-20.bg-gray-900.bg-opacity-25.inset-0.transform.ease-in-out.transition-opacity.opacity-100.duration-500.translate-x-0
       m("div.fixed.overflow-hidden.z-20.bg-gray-900.bg-opacity-25.inset-0.transform.ease-in-out.transition-all.delay-500.opacity-0.translate-x-full",
         [
@@ -106,7 +109,6 @@ export const Dashboard = {
         )
       )
       // m(Sections),
-      // m(Notifications) 
     ]
   }
 }

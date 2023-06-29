@@ -5,7 +5,7 @@ module.exports = {
     // darkMode: ["class", '[data-theme="dark"]'],
     theme: {
         screens: {
-            xs: '475px',
+            'xs': '475px',
             // xs: '375px',
             'sm': '640px',
             'md': '768px',
@@ -97,17 +97,17 @@ module.exports = {
                         "background-color": "#ea5234",
                         "border-color": "#ea5234",
                     },
-                    ".toast-success":{
+                    ".icon-success":{
                         "background-color": "#D1FAE5",
                         "color": "#10B981"
                     },
-                    ".toast-warn":{
-                        "background-color": "#F59E0B",
-                        "color": "#FEF3C7"
+                    ".icon-warn":{
+                        "background-color": "#FDE68A",
+                        "color": "#F59E0B"
                     },
-                    ".toast-danger":{
-                        "background-color": "#EF4444",
-                        "color": "#FEE2E2"
+                    ".icon-error":{
+                        "background-color": "#FEE2E2",
+                        "color": "#EF4444"
                     }
                    
 
@@ -135,15 +135,15 @@ module.exports = {
                     ".btn-white": "#ffffff",
                     // "base-100": "#18342b",
                     // "base-100": "#171212",
-                    ".toast-success": {
+                    ".icon-success": {
                         "background-color": "#065F46",
                         "color": "#A7F3D0"
                     },
-                    ".toast-warn": {
+                    ".icon-warn": {
                         "background-color": "#B45309",
                         "color": "#FDE68A"
                     },
-                    ".toast-danger": {
+                    ".icon-error": {
                         "background-color": "#991B1B",
                         "color": "#FECACA"
                     }

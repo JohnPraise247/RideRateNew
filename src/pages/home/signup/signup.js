@@ -5,6 +5,7 @@ import TextInput from "../../../components/input";
 import { SVGConsumer, SVGContributor } from '../../../components/svg';
 import Auth from "../../../app/auth";
 import { Model } from "../../../app/model";
+import Toast from '../../../components/dashboard/toast';
 // import { Notifications } from '../../notification';
 
 
@@ -19,7 +20,8 @@ const Signup = {
         Auth.accountCreated ? (vnode.state.step = 3, m.redraw()) : null
     },
     view: (vnode) => {
-        return m(AuthLayout, {
+        return [
+          m(AuthLayout, {
             step: vnode.state.step,
             title: "Join the RateTracker Community Today!",
             subtitle: "Get real-time rates, personalized recommendations, and connect with fellow travelers. Sign up now!",
@@ -124,7 +126,13 @@ const Signup = {
                     ]) */
                 ]): null
             ]
-        })
+        }),
+         m(".toast.toast-top.toast-end.z-40.pt-6", [
+            Model.toast.map((e) => {
+                return m(Toast, { type: e.type, text: e.text })
+            })
+        ])
+      ]
     }
 }
 

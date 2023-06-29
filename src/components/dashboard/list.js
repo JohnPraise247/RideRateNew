@@ -7,7 +7,7 @@ const flex = {
     view:({ state:{ url = m.route.param("urlA") },attrs: { i, className, iconClass }})=>{
         return m(".flex.items-center.justify-center", { key: i.id },[
             m(".flex.w-full.mt-3.p-2.rounded-lg.md:justify-center.items-center", [//bordner
-                m(".w-10.h-10.border"+className+".rounded-lg.flex.justify-center.items-center", [
+                m(".w-10.h-10"+className+".rounded-lg.flex.justify-center.items-center", [
                     m(SVGLocation, { className: "w-6 h-6 " + iconClass })
                 ]),
                 m(".w-fit.flex.flex-col.justify-center.ml-2", [
@@ -89,18 +89,18 @@ const List = {
         return array.data.map((i)=>{
               return status == "approved" && i.status == "approved" ? m(flex, { 
                    i,
-                   className: ".border-gray-300.bg-green-50",//".border-green-500.bg-green-50",
-                   iconClass: "text-green-500"
+                   className: ".icon-success",//".border-green-500.bg-green-50",".border-gray-300.bg-green-50"
+                //    iconClass: "text-green-500"
                 }) 
                 : status == "pending" && i.status == "pending" ? m(flex, { 
                     i,
-                    className: ".border-gray-300.bg-yellow-50",//".border-yellow-500.bg-yellow-50",
-                    iconClass: "text-yellow-500" 
+                    className: ".icon-warn",//".border-yellow-500.bg-yellow-50",.border-gray-300.bg-yellow-50
+                    // iconClass: "text-yellow-500" 
                   }) 
                 : status == "rejected" && i.status == "rejected" ? m(flex, { 
                     i,
-                    className: ".border-gray-300.bg-red-50",//".border-red-500.bg-red-50",
-                    iconClass: "text-red-500"
+                    className: ".icon-error",//".border-red-500.bg-red-50",.border-gray-300.bg-red-50
+                    // iconClass: "text-red-500"
                 }) 
                 : null
           })

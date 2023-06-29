@@ -3,6 +3,7 @@ import { Button } from '../../../components/button';
 import TextInput from '../../../components/input';
 import Auth from '../../../app/auth';
 import { Model } from '../../../app/model';
+import Toast from '../../../components/dashboard/toast';
 // import { Notifications } from '../../notification';
 
 
@@ -76,7 +77,11 @@ const Login = {
                     ) : null 
                 ]
             }),
-        // m(Notifications)
+            m(".toast.toast-top.toast-end.z-40.pt-6", [
+                Model.toast.map((e) => {
+                    return m(Toast, { type: e.type, text: e.text })
+                })
+            ])
       ]    
     }
 }

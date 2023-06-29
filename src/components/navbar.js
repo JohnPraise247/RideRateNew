@@ -1,5 +1,5 @@
-import { Button, ButtonMode } from "./button"
-import { SVGChevronDown, SVGChevronRight, SVGMenu } from "./svg";
+import { Button} from "./button"
+import { SVGMenu } from "./svg";
 
  const NavBar = {
     view:()=>{

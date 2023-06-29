@@ -15,7 +15,8 @@ export const Model = {
             dateCreated: "",
             dateUpdated: ""
         }
-    }
+    },
+    toast: []
 }
 
 export const setCookie = (cname, cvalue, exdays) => {

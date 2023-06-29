@@ -123,7 +123,7 @@ const deleteModal = {
                         m("label.btn.btn-error.text-white.btn-sm.btn-circle.absolute.right-2.top-2" + label, "✕"),
                         m("h3.text-lg.font-bold.text-error", "Delete entry?"),
                         m(".space-y-2", [
-                            m("p.text-error", {tag:"br"},"Are  you sure you want to delete this entry?"),
+                            m("p", {tag:"br"},"Are  you sure you want to delete this entry?"),
                             m("small.text-error", "This action cannot be undone")
                         ]),
                         m(".flex.justify-between.items-center", [

@@ -1,3 +1,4 @@
+import { showToast } from "../components/dashboard/toast";
 import { Model } from "./model";
 
 export var locations = {
@@ -158,8 +159,7 @@ export const createEntry = (a, b, desc) => {
 
         // console.log(locations.data.length)
         // console.log(JSON.stringify(locations.data))
-       
-        // addSuccess('Location has been created');
+        showToast("Location has been created")
     } else if (param == "rates") {
         rates.data.push({
             id: randomString(), //crypto.randomUUID(),
@@ -181,6 +181,7 @@ export const createEntry = (a, b, desc) => {
             dateUpdated: ""
         })
         m.route.set((url == "admin" ? "/admin" : "/u") + "/rates/new")
+        showToast("Rate has been created")
     }
 }
 
@@ -201,6 +202,8 @@ export const editEntry = (array) => {
                 //     )) : localStorage.setItem(Model.localStorage.name, JSON.stringify({ id }))
             }
         })
+
+        showToast("Edited successfully")
     }
 }
 
@@ -210,5 +213,5 @@ export const deleteEntry = (array, id) => {
 
     //  Model.selectAll ? m.route.set(getUsertype() + "/rates", null, { replace: true })
     // : m.route.set(path + "/rates", { selected: Model.data.status.charAt(0).toUpperCase() + Model.data.status.slice(1) }, { replace: true })
-// addSuccess('Deleted successfully');
+    showToast("Deleted successfully")
 }

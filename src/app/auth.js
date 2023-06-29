@@ -1,3 +1,4 @@
+import { showToast } from "../components/dashboard/toast";
 import { Model } from "./model";
 import PocketBase from './pocketbase.umd';
 
@@ -63,8 +64,7 @@ const Auth = {
         } catch (error) {
             Model.disableBtn = null
             m.redraw()
-            alert(error.message)
-            // addDanger(error.message)
+            showToast(error.message, "error");
         }
     },
     signup: async function () {
@@ -92,8 +92,7 @@ const Auth = {
         } catch (error) {
             Model.disableBtn = null
             m.redraw()
-            alert(error.message)
-            // addDanger(error.message)
+            showToast(error.message, "error")
         }
 
         // m.request({

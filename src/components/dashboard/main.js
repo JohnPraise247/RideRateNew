@@ -25,7 +25,7 @@ const dashboardSection = {
     view:()=>{
         return [
             m(".grid.grid-cols-1.sm:grid-cols-2.gap-4", [
-            m("h2.font-semibold","Overview"),
+            m("h2.mb-6.text-xl.font-semibold.md:text-2xl","Overview"),
             m(".text-right",
                 [
                     m(Button, {
