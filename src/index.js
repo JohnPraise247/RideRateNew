@@ -1,10 +1,4 @@
-// import { themeChange } from 'theme-change'; 
 import Auth from "./app/auth";
-// const { toast, snackbar } = require('tailwind-toast')
-// import toast from 'svelte-french-toast';
-
-// import { toast } from 'tailwind-toast';
-// import { startWindToast } from "@mariojgt/wind-notify/packages/index";
 import Home from "./pages/home/home";
 import Signup from './pages/home/signup/signup';
 import Login from './pages/home/login/login';
@@ -12,32 +6,15 @@ import ForgotPwd from './pages/home/forgot-pwd/forgot-pwd';
 import { Dashboard } from './pages/dashboard/dashboard';
 import Error404 from "./pages/home/404/404";
 
-// dark mode doesnt work on build but works on dev ()
 
-// toast().default('Title', 'Message!').show()
-
-// var title = "Success"
-// var message = "Hello world"
-// var alertType = "success"
-// var time = 100
-// var position = "right"
-// startWindToast(title, message, alertType, time, position)
-
-
-//mode btn changes unexpectedly on switch btn links
-// toast.success("It works")
+//if you want to change spiinner use this https://codepen.io/jkantner/pen/abwgLNX
 
 // Todo
-//check if loading daisyui is available
 //change the accordion on location.js
 //add remeber me to sign in
 //design 404 page for main page
 
-//change spiiner to pure css. in webpack.build.js
 //add fadein via taliwindcss
-
-
-//https://www.npmjs.com/package/daisyui/v/2.52.0
 //https://emailvalidation.abstractapi.com/v1/?api_key=5f966a5af58040c191908e33902b1a3b&email=jpraise247@gmail.com
 /* 
 try {

@@ -9,7 +9,7 @@ import {
     SVGExclamation, 
     SVGLocation, SVGRefresh, 
     SVGShare, 
-    SVGTick, 
+    SVGTickCircle, 
     SVGTimes, 
     SVGUsers
 } from "../svg";
@@ -72,7 +72,7 @@ const dashboardSection = {
                     "Rejected"
                 ],
                 value: [ 23, 4, 11],
-                svg: [ SVGTick, SVGExclamation, SVGTimes ],
+                svg: [ SVGTickCircle, SVGExclamation, SVGTimes ],
                 // info: [ "","","" ]
             }),
 
