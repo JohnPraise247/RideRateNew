@@ -113,9 +113,32 @@ const locationModal = {
 
 const deleteModal = {
     view:()=>{
-        var [id, label] = [ "[id='modalDelete']", "[for='modalDelete']"];
-
-        return [
+        return m("dialog.modal.modal-bottom.sm:modal-middle[id='modalDelete']",
+            m("form.modal-box[method='dialog']",
+                [
+                    m("button.btn.btn-error.text-swhite.btn-sm.btn-circle.absolute.right-2.top-2", "✕"),
+                    m("h3.text-lg.font-bold.text-error", "Delete entry?"),
+                    m(".space-y-2", [
+                        m("p.text-white.opacity-50", { tag: "br" }, "Are  you sure you want to delete this entry?"),
+                        m("small.text-error", "This action cannot be undone")
+                    ]),
+                    m(".flex.justify-between.items-center", [
+                        m("div.modal-action",
+                            m("button.btn.btn-ghost.texts-gray-500", "Cancel")
+                        ),
+                        m("div.modal-action",
+                            m("button.btn.btn-error.text-swhite", {
+                                onclick: () => deleteEntry(locations, Model.modal.location.id)
+                            }, "Delete")
+                        )
+                    ])
+                ]
+            )
+        )
+        
+        
+        
+       /* [
             m("input.modal-toggle[type='checkbox']" + id),
             m("div.modal.modal-bottom.sm:modal-middle",
                 m("div.modal-box.relative",
@@ -139,7 +162,7 @@ const deleteModal = {
                     ]
                 )
             )
-        ]
+        ]*/
     }
 }
 

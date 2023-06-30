@@ -1,11 +1,28 @@
-const Accordion = {
-    view: ({ state:{ color }, attrs: { label, children, className, svg, open = false } }) => {
-        label == "Approved" ? color = "text-green-500"
-        : label == "Pending" ? color = "text-yellow-500"
-        : label == "Rejected" ? color = "text-red-500"
-        : null
+import { SVGExclamation, SVGTickCircle, SVGTimes } from "../svg";
 
-        return m(".mt-3.p-5.rounded-lg.bg-base-100.overflow-hidden", {
+const Accordion = {
+    view: ({ state: { color = ["text-green-500", "text-yellow-500", "text-red-500"], svg = [SVGTickCircle, SVGExclamation, SVGTimes] }, attrs: { name, title, content, checked = "" } }) => {
+
+        return title.map((e, i) => {
+            return m(".mt-3.collapse.collapse-arrow.bg-base-100.rounded-lg.shadow",
+                [
+                    m("input[type='radio']" + (checked == e.toLowerCase() ? "[checked]" : ""), {//[checked]
+                        name
+                    }),
+                    m(".flex.collapse-title.text-xl.font-medium.items-center", { 
+                        class: color[i]
+                    }, m(svg[i], { className: "w-6 h-6 " + color }), e),
+                    m("div.collapse-content",
+                        m("p", content[i])
+                    )
+                ]
+            )
+        })
+        
+        
+        
+        /*
+        m(".mt-3.p-5.rounded-lg.bg-base-100.overflow-hidden", {
             class: className
         },
             m("details.group" + (open == true ? "[open]" : ""),
@@ -29,7 +46,7 @@ const Accordion = {
                     // m("p.text-neutral-600.mt-3.group-open:animate-fadeIn", desc )
                 ]
             )
-        )
+        )*/
     }
 }
 

@@ -105,7 +105,10 @@ client.Records.getOne("demo", "RECORD_ID")
 // let pbExists = localStorage.getItem("pocketbase_auth")
 // pbExists == null ? Auth.signin = false : Auth.signin = true
 // pb.authStore.clear();
-if (window.location.host == "localhost:9020") Auth.adminSignin = true
+var env = process.env.NODE_ENV || 'development';
+
+if (env == "development") Auth.adminSignin = true
+// if (window.location.host == "localhost:9020") Auth.adminSignin = true
 
 m.route.prefix = '#'
 m.route(document.body, "/", {

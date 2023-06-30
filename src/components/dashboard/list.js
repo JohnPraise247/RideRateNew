@@ -1,20 +1,19 @@
-import { deleteEntry, locations } from "../../app/data";
 import { Model } from "../../app/model";
-// import { labelButton } from "../button";
 import { SVGEdit, SVGLocation, SVGTrash } from "../svg";
 
 const flex = {
     view:({ state:{ url = m.route.param("urlA") },attrs: { i, className, iconClass }})=>{
         return m(".flex.items-center.justify-center", { key: i.id },[
-            m(".flex.w-full.mt-3.p-2.rounded-lg.md:justify-center.items-center", [//bordner
+            m(".flex.w-full.mt-3.p-2.rounded-lg.items-center", [//bordner.md:justify-center
                 m(".w-10.h-10"+className+".rounded-lg.flex.justify-center.items-center", [
                     m(SVGLocation, { className: "w-6 h-6 " + iconClass })
                 ]),
                 m(".w-fit.flex.flex-col.justify-center.ml-2", [
-                    m("p.truncate.stat-figure.w-40.md:w-64", i.start + " to " + i.destination),
-                    i.description != null ? m("small.truncate.stat-desc.hidden.md:block.md:w-56", i.description) : null
-                ]),
-                m(".rounded-full.border.border-gray-300.px-2.text-xs.text-gray-400.ml-auto.hidden.md:block", "Created: " + i.dateCreated)
+                    m("p.truncate.w-28.sm:w-40.md:w-64.lg:!w-96", i.start + " to " + i.destination),//.w-28.sm:w-40.md:w-64  
+                    //failed to
+                    i.description != null ? m("small.truncate.opacity-50.w-28.sm:!w-40.lg:!w-96", i.description) : null
+                ]),//.md:w-56.hidden.md:block
+                m(".rounded-full.border.border-gray-300.px-2.text-xs.text-gray-400.ml-auto.hidden.lg:block", "Created: " + i.dateCreated)
             ]),
             // m(labelButton, {
             //     id: (
@@ -52,12 +51,11 @@ const flex = {
                 })
             ) : null,
             m("label.btn.btn-delete.rounded-lg.text-red.mt-3.ml-2.justify-center.items-center.btn-sm.md:h-10", {
-                for: (
-                    url == "locations" ? "modalDelete"
+                onclick: () => {
+                    url == "locations" ? modalDelete.showModal()
                         : url == "rates" ? "modalCreateRate"
                             : ""
-                ),
-                onclick: () => {
+
                     Model.modal.location.id = i.id
                     Model.modal.location.title = "Edit location entry"
                     Model.modal.location.start = i.start

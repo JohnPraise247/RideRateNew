@@ -8,12 +8,37 @@ import { getLength, locations } from "../../../app/data";
 import { Model, isAdmin } from "../../../app/model";
 import List from "../../../components/dashboard/list";
 import Table from "../../../components/dashboard/table";
-import Title from "../../../components/dashboard/title";
 
 
 const sectionMain = {
   view:()=>{
     return [
+        m("button.btn",{
+          onclick:()=>{
+            my_modal_3.showModal()
+          }
+        },
+          "open modal"
+        ),
+        m("dialog.modal[id='my_modal_3']",
+          m("form.modal-box[method='dialog']",
+            [
+              m("button.btn.btn-sm.btn-circle.btn-ghost.absolute.right-2.top-2",
+                "✕"
+              ),
+              m("h3.font-bold.text-lg",
+                "Hello!"
+              ),
+              m("p.py-4",
+                "Press ESC key or click on ✕ button to close"
+              )
+            ]
+          )
+        ),
+
+
+
+
         m(StatsRow, {
         label: [
           "Total Approved",
@@ -26,29 +51,43 @@ const sectionMain = {
       }),
       m(".mt-8"),
       m(Accordion, {
-        label: "Approved",
-        children: m(List, {array: locations, status: "approved"}),
-        svg: SVGTickCircle,
-        // className: "border border-green-500",
-        className: "shadow",
-        open: getLength(locations, "approved") > 0 ? true : false
-      }),
-      m(Accordion, {
-        label: "Pending",
-        children: m(List, {array: locations, status: "pending"}),
-        svg: SVGExclamation,
-        // className: "border border-yellow-500",
-        className: "shadow",
-        open: getLength(locations, "pending") > 0 ? true : false
-      }),
-      m(Accordion, {
-        label: "Rejected",
-        children: m(List, {array: locations, status: "rejected"}),
-        svg: SVGTimes,
-        // className: "border border-red-500",
-        className: "shadow",
-        open: getLength(locations, "rejected") > 0 ? true : false
+        name: "my-accordion",
+        title: ["Approved", "Pending", "Rejected"],
+        content: [
+          m(List, { array: locations, status: "approved" }),
+          m(List, { array: locations, status: "pending" }),
+          m(List, { array: locations, status: "rejected" })
+        ],
+        checked: getLength(locations, "approved") > 0 ? "approved" : ""
       })
+      
+      // m(Accordion, {
+      //   name: "my-accordion",
+      // })
+      // m(Accordion, {
+      //   label: "Approved",
+      //   children: m(List, {array: locations, status: "approved"}),
+      //   svg: SVGTickCircle,
+      //   // className: "border border-green-500",
+      //   className: "shadow",
+      //   open: getLength(locations, "approved") > 0 ? true : false
+      // }),
+      // m(Accordion, {
+      //   label: "Pending",
+      //   children: m(List, {array: locations, status: "pending"}),
+      //   svg: SVGExclamation,
+      //   // className: "border border-yellow-500",
+      //   className: "shadow",
+      //   open: getLength(locations, "pending") > 0 ? true : false
+      // }),
+      // m(Accordion, {
+      //   label: "Rejected",
+      //   children: m(List, {array: locations, status: "rejected"}),
+      //   svg: SVGTimes,
+      //   // className: "border border-red-500",
+      //   className: "shadow",
+      //   open: getLength(locations, "rejected") > 0 ? true : false
+      // })
     ]
   }
 }
