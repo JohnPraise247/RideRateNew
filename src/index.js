@@ -10,6 +10,7 @@ import Error404 from "./pages/home/404/404";
 //if you want to change spiinner use this https://codepen.io/jkantner/pen/abwgLNX
 
 // Todo
+//check if modal text has been updated, then remove class className: ".text-base-400 "  --> for text clolr
 //change the accordion on location.js
 //add remeber me to sign in
 //design 404 page for main page

@@ -13,32 +13,6 @@ import Table from "../../../components/dashboard/table";
 const sectionMain = {
   view:()=>{
     return [
-        m("button.btn",{
-          onclick:()=>{
-            my_modal_3.showModal()
-          }
-        },
-          "open modal"
-        ),
-        m("dialog.modal[id='my_modal_3']",
-          m("form.modal-box[method='dialog']",
-            [
-              m("button.btn.btn-sm.btn-circle.btn-ghost.absolute.right-2.top-2",
-                "✕"
-              ),
-              m("h3.font-bold.text-lg",
-                "Hello!"
-              ),
-              m("p.py-4",
-                "Press ESC key or click on ✕ button to close"
-              )
-            ]
-          )
-        ),
-
-
-
-
         m(StatsRow, {
         label: [
           "Total Approved",

@@ -13,13 +13,11 @@ export const Fab = {
 }
 
 export const Fab2 = {
-    view: ({ state: { url = m.route.param("urlA") }, attrs:{ onclick }})=>{
-        return m("label.btn.btn-circle.btn-primary.fixed.right-5.bottom-5.shadow-md.text-white", {
+    view: ({ state: { url = m.route.param("urlA") }})=>{
+        return m("button.btn.btn-circle.btn-primary.fixed.right-5.bottom-5.shadow-md.text-white", {
             onclick: () => {
-                url == "locations" ? modalLocation.showModal()
-                : url == "rates" ? "modalCreateRate"
-                : "modalCreate"
-                Model.modal.location.title = "New location entry"
+                url == "locations" ? (Model.modal.location.title = "New location entry", modalLocation.showModal())
+                : null 
             }
         },
             m(SVGPlus)

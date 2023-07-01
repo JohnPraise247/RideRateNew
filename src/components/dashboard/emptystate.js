@@ -7,13 +7,10 @@ const emptyState = {
         return m(".rounded-full.items-center.flex.flex-col.mt-36.md:mt-24", [//.bg-gray-500.w-72
             m(SVGEmpty, { className: "md:h-48 md:w-48 w-24 h-24" }),
             // m("h3","No locations created yet"),
-            m("label.btn.btn-primary.btn-sm.capitalize.font-bold.mt-5.text-white.md:ml-12.md:px-5.md:h-10", {
-                for: (
-                    url == "locations" ? "modalLocation"
-                        : url == "rates" ? "modalCreateRate"
-                        : "modalCreate"
-                ), onclick: () => {
-                    Model.modal.location.title = "New location entry"
+            m("button.btn.btn-primary.btn-sm.capitalize.font-bold.mt-5.text-white.md:ml-12.md:px-5.md:h-10", {
+                onclick: () => {
+                    url == "locations" ? (Model.modal.location.title = "New location entry", modalLocation.showModal())
+                   : null
                 }
             },
                 (

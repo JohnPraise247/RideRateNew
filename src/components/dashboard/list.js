@@ -30,13 +30,11 @@ const flex = {
             // m("button.btn.btn-edit.rounded-lg.border.border-gray.mt-3.ml-2.justify-center.items-center.btn-sm.md:h-10", m(SVGEdit, {
             //     className: "text-gray-700 h-3 w-3 md:h-4 md:w-4"
             // })),
-            i.status == "pending" ? m("label.btn.btn-edit.rounded-lg.border.border-gray.mt-3.ml-2.justify-center.items-center.btn-sm.md:h-10", {
-                for: (
-                    url == "locations" ? "modalLocation"
-                        : url == "rates" ? "modalCreateRate"
-                            : "modalCreate"
-                ),
+            i.status == "pending" ? m("button.btn.btn-edit.rounded-lg.border.border-gray.mt-3.ml-2.justify-center.items-center.btn-sm.md:h-10", {
                 onclick: () => {
+                    url == "locations" ? modalLocation.showModal()
+                    : null
+
                     Model.modal.location.id = i.id
                     Model.modal.location.title = "Edit location entry"
                     Model.modal.location.start = i.start
@@ -50,11 +48,10 @@ const flex = {
                     className: "text-gray-700 h-3 w-3 md:h-4 md:w-4"
                 })
             ) : null,
-            m("label.btn.btn-delete.rounded-lg.text-red.mt-3.ml-2.justify-center.items-center.btn-sm.md:h-10", {
+            m("button.btn.btn-delete.rounded-lg.text-red.mt-3.ml-2.justify-center.items-center.btn-sm.md:h-10", {
                 onclick: () => {
                     url == "locations" ? modalDelete.showModal()
-                        : url == "rates" ? "modalCreateRate"
-                            : ""
+                    :null
 
                     Model.modal.location.id = i.id
                     Model.modal.location.title = "Edit location entry"

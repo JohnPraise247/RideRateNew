@@ -51,6 +51,9 @@ module.exports = {
                     neutral: "#3d4451"/* #333c4d */,//#D1D5DB",//333c4d  #66cc8a
                     // neutral: "#66cc8a",//#D1D5DB",//333c4d  #66cc8a
                     "base-100": "#ffffff",
+                    ".text-base-400":{
+                        color: "#565656"
+                    },
                     ".btn-white": {//for app download button
                         "background-color": "#ffffff",
                         "border-color": "#ffffff",
@@ -89,14 +92,14 @@ module.exports = {
                         "background-color": "transparent",
                         "border-color": "transparent",//#66cc8a
                     },
-                    ".btn-error": {
-                        "background-color": "#f87272", 
-                        "border-color": "#f87272",
-                    },
-                    ".btn-error:hover": {
-                        "background-color": "#ea5234",
-                        "border-color": "#ea5234",
-                    },
+                    // ".btn-error": {
+                    //     "background-color": "#f87272", 
+                    //     "border-color": "#f87272",
+                    // },
+                    // ".btn-error:hover": {
+                    //     "background-color": "#ea5234",
+                    //     "border-color": "#ea5234",
+                    // },
                     ".icon-success":{
                         "background-color": "#D1FAE5",
                         "color": "#10B981"
@@ -132,6 +135,9 @@ module.exports = {
                     accent: "#f04050",//93ffa1
                     neutral: "#3d4451",
                     "base-100": "#212121",//grey
+                    ".text-base-400": {
+                        color: "#d0d0d0"
+                    },
                     ".btn-white": "#ffffff",
                     // "base-100": "#18342b",
                     // "base-100": "#171212",
