@@ -2,10 +2,9 @@
 Ride Rate New website
 
 
-• Improved Performance - faster load time 
-• Good rating on lighthouse
-• Very responsive
-• Uses pocketbase for backend 
+
+
+• Improved Performance - faster load time, Good rating on lighthouse, Very responsive, Uses pocketbase for backend 
 
 
 
