@@ -8,4 +8,4 @@ Ride Rate New website
 
 
 
-But sadly this project has been abandoned 😔
+But sadly this project has been discontinued 😔
